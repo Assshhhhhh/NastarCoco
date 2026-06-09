@@ -8,19 +8,13 @@ export default function Hero() {
       id="hero"
       className="relative overflow-hidden -mt-16 md:-mt-[4.5rem] min-h-screen flex items-center"
     >
-      {/* Background — full cover */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: "url('/Hero BG.png')",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-        }}
-      />
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
+      {/* Background — full natural height */}
+      <Image
+        src="/NastarCoco BG.png"
+        alt=""
+        fill
+        className="object-cover object-center"
+        priority
       />
 
       {/* Main Content */}
