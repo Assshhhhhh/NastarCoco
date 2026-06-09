@@ -37,9 +37,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="text-ivory/65 text-base md:text-lg leading-relaxed max-w-lg">
-              Nastar Coco menghadirkan nastar premium-casual yang hangat, buttery,
-              dan gift-worthy — dibuat untuk keluarga, hadiah, momen spesial, dan
-              kini berkembang bersama{" "}
+              Soft, buttery, and filled with rich pineapple sweetness, Nastar Coco turns Indonesia’s beloved nastar into a beautifully packed treat made for gifting, sharing, and enjoying anytime.{" "}
             </p>
 
             {/* CTAs */}

@@ -22,8 +22,11 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const hero = document.getElementById("hero");
-      const heroHeight = hero ? hero.offsetHeight : window.innerHeight;
-      setOpacity(Math.min(window.scrollY / heroHeight, 1));
+      if (!hero) {
+        setOpacity(1);
+        return;
+      }
+      setOpacity(Math.min(window.scrollY / hero.offsetHeight, 1));
     };
 
     handleScroll();
