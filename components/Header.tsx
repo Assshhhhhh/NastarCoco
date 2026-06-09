@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-import { WHATSAPP_URL } from "@/data/site";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -18,6 +18,7 @@ const NAV_LINKS = [
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +33,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   const bgColor = `rgba(74, 113, 69, ${opacity})`;
   const mobileMenuBg = `rgba(74, 113, 69, 0.98)`;
@@ -105,17 +106,6 @@ export default function Header() {
                   {link.label}
                 </Link>
               ))}
-              <div className="pt-2 border-t border-ivory/10 mt-2">
-                <Link
-                  href={WHATSAPP_URL()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-gold text-green-dark font-semibold text-sm px-5 py-3 rounded-full w-full justify-center hover:bg-gold-soft transition-colors duration-200"
-                >
-                  <WhatsAppIcon />
-                  Order via WhatsApp
-                </Link>
-              </div>
             </div>
           </div>
         )}

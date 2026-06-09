@@ -3,7 +3,6 @@ import { Plus_Jakarta_Sans, DM_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import StickyWhatsApp from "@/components/StickyWhatsApp";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -50,7 +49,6 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <StickyWhatsApp />
       </body>
     </html>
   );
