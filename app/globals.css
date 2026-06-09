@@ -130,3 +130,24 @@ a.nav-link::after {
 a.nav-link:hover::after { width: 100%; }
 
 .hover-whatsapp:hover { color: #25D366; }
+
+/* Hero CTA buttons */
+.hero-order-btn {
+  background-color: #122D1C;
+  color: #FFFDF7;
+  border: 1.5px solid rgba(246,178,26,0.4);
+}
+.hero-order-btn:hover {
+  background-color: #1F5A34;
+  border-color: rgba(246,178,26,0.7);
+  box-shadow: 0 4px 20px rgba(246,178,26,0.15);
+}
+
+.hero-secondary-btn {
+  border-bottom: 1.5px solid rgba(255,253,247,0.3);
+  padding-bottom: 2px;
+}
+.hero-secondary-btn:hover {
+  color: #FFFDF7;
+  border-bottom-color: rgba(255,253,247,0.7);
+}

@@ -6,135 +6,67 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden -mt-16 md:-mt-[4.5rem] min-h-screen flex items-center bg-green-dark"
+      className="relative overflow-hidden -mt-28 md:-mt-32 min-h-screen flex items-center bg-green-dark"
     >
-      {/* Background — full natural height */}
+      {/* Background image — unchanged */}
       <Image
-        src="/Firefly.png"
+        src="/NastarCoco 4k bg.png"
         alt=""
         fill
         sizes="100vw"
         quality={100}
-        className="object-cover object-center"
+        className="object-cover"
+        style={{ objectPosition: "56% 56%" }}
         priority
       />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col gap-8 py-32 lg:py-0 lg:min-h-screen lg:justify-center max-w-xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+        <div
+          className="flex flex-col gap-8 pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:justify-center"
+          style={{ maxWidth: "620px" }}
+        >
 
-          {/* Eyebrow */}
-          <div className="flex items-center gap-3">
-            <div className="h-px w-6 bg-gold/50" />
-            <p className="text-gold/90 text-[10px] font-semibold tracking-[0.22em] uppercase">
+          {/* Eyebrow + Headline group — tight gap between them */}
+          <div className="flex flex-col gap-3">
+          {/* Eyebrow — dot + uppercase label */}
+          <div className="flex items-center gap-2.5">
+            <span
+              className="w-2 h-2 rounded-full flex-shrink-0"
+              style={{ backgroundColor: "#F6B21A" }}
+            />
+            <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "#4A7145" }}>
               Premium Nastar Indonesia
             </p>
           </div>
 
-          {/* Headline */}
+          {/* Headline — large editorial serif */}
           <h1
-            className="font-display text-ivory leading-[1.02] tracking-tight"
-            style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
+            className="font-display text-ivory leading-[1.05] tracking-tight"
+            style={{ fontSize: "clamp(3.2rem, 6.5vw, 5.5rem)" }}
           >
-            A{" "}
-            <em className="not-italic italic text-gold">sweet</em> escape
+            A Sweet escape,
             <br />
             in every{" "}
-            <em className="not-italic italic text-gold">bite.</em>
+            <em className="not-italic italic" style={{ color: "#F6B21A" }}>
+              Bite.
+            </em>
           </h1>
+          </div>
 
-          {/* Horizontal Product Feature Card */}
-          <div
-            className="flex flex-col sm:flex-row rounded-2xl overflow-hidden"
-            style={{
-              maxWidth: "480px",
-              background: "linear-gradient(135deg, rgba(31,90,52,0.6) 0%, rgba(18,45,28,0.88) 100%)",
-              border: "1px solid rgba(246,178,26,0.22)",
-              backdropFilter: "blur(20px)",
-              boxShadow: "0 0 0 1px rgba(246,178,26,0.05), 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(246,178,26,0.1)",
-            }}
+          {/* Supporting paragraph */}
+          <p
+            className="leading-relaxed"
+            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "#4A7145" }}
           >
-            {/* Left — Product image */}
-            <div
-              className="sm:w-44 flex-shrink-0 flex items-center justify-center relative overflow-hidden min-h-[140px]"
-              style={{
-                background: "linear-gradient(160deg, rgba(246,178,26,0.12) 0%, rgba(18,45,28,0.4) 100%)",
-              }}
-            >
-              <div
-                className="absolute inset-0"
-                style={{
-                  background: "radial-gradient(circle 70px at 50% 50%, rgba(246,178,26,0.18) 0%, transparent 70%)",
-                }}
-              />
-              {/* Replace /logo.png with the actual nastar product photo */}
-              <Image
-                src="/logo.png"
-                alt="Pineapple Nastar – Nastar Coco Signature"
-                width={100}
-                height={100}
-                className="relative z-10 object-contain drop-shadow-lg"
-                style={{ opacity: 0.9 }}
-              />
-            </div>
+            Delicate pineapple filling wrapped in a buttery, melt-in-your-mouth
+            crust. A timeless Indonesian favorite, crafted with premium
+            ingredients.
+          </p>
 
-            {/* Right — Product info */}
-            <div className="flex flex-col justify-center px-5 py-4 gap-1.5">
-              <p className="text-gold/75 text-[9px] font-bold tracking-[0.22em] uppercase">
-                Signature Product
-              </p>
-              <p className="text-ivory text-base font-semibold leading-tight">
-                Pineapple Nastar
-              </p>
-              <p className="text-ivory/55 text-[13px] leading-relaxed">
-                Soft, buttery pineapple crumble cookies, beautifully packed for
-                gifting, sharing, and everyday sweet moments.
-              </p>
-            </div>
-          </div>
 
-          {/* CTAs + Trust */}
-          <div className="flex flex-col gap-5">
+          {/* TODO: Add trust strip back — NIB Terdaftar, PIRT Sertifikasi, Halal MUI, BPOM Terdaftar, Food Hall & Kemchick */}
 
-            {/* CTAs */}
-            <div className="flex items-center gap-5">
-              <Link
-                href={WHATSAPP_URL()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover-whatsapp inline-flex items-center gap-2 text-ivory font-semibold text-sm transition-colors duration-200"
-              >
-                <WaIcon />
-                Order via WhatsApp
-              </Link>
-              <span className="text-gold font-light text-lg leading-none select-none">|</span>
-              <Link
-                href="/cocoffee"
-                className="text-ivory font-semibold text-sm hover:text-[#C4956A] transition-colors duration-200"
-              >
-                Explore Cocoffee
-              </Link>
-            </div>
-
-            {/* Trust row */}
-            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              {["NIB Terdaftar", "PIRT Sertifikasi", "Halal MUI", "BPOM Terdaftar"].map((label) => (
-                <span
-                  key={label}
-                  className="flex items-center gap-1.5 text-ivory/35 text-[10px] font-medium tracking-wide"
-                >
-                  <VerifiedIcon />
-                  {label}
-                </span>
-              ))}
-              <span className="text-ivory/15 text-xs hidden sm:inline select-none">|</span>
-              <span className="flex items-center gap-1.5 text-ivory/35 text-[10px] font-medium">
-                <StoreIcon />
-                Food Hall &amp; Kemchick
-              </span>
-            </div>
-
-          </div>
         </div>
       </div>
     </section>
@@ -154,11 +86,7 @@ function WaIcon() {
 function VerifiedIcon() {
   return (
     <svg className="w-3 h-3 shrink-0 text-gold/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path
-        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
