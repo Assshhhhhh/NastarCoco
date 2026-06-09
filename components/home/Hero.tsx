@@ -1,47 +1,107 @@
 import Link from "next/link";
+import Image from "next/image";
 import { WHATSAPP_URL } from "@/data/site";
 
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden -mt-16 md:-mt-18 min-h-screen flex items-center"
-      style={{
-        backgroundImage: "url('/Hero BG.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="relative overflow-hidden -mt-16 md:-mt-[4.5rem] min-h-screen flex items-center"
     >
-      {/* Overlay to ensure text legibility */}
-      <div className="absolute inset-0 pointer-events-none" style={{ backgroundColor: "rgba(0,0,0,0.25)" }} />
+      {/* Background — full cover */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url('/Hero BG.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
+      />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 w-full">
-        <div className="flex flex-col max-w-2xl">
-          {/* Left — Copy */}
-          <div className="flex flex-col gap-7 text-left">
-            <div className="flex flex-col gap-2">
-              <p className="text-gold text-xs font-semibold tracking-widest uppercase">
-                Premium Nastar Indonesia
-              </p>
+      {/* Main Content */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex flex-col gap-8 py-32 lg:py-0 lg:min-h-screen lg:justify-center max-w-xl">
 
-              {/* Headline */}
-              <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl text-ivory leading-[1.05] tracking-tight">
-                A {" "}
-                <span className="italic text-gold">sweet </span>
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3">
+            <div className="h-px w-6 bg-gold/50" />
+            <p className="text-gold/90 text-[10px] font-semibold tracking-[0.22em] uppercase">
+              Premium Nastar Indonesia
+            </p>
+          </div>
 
-                escape in every
-                <span className="italic text-gold"> bite. </span>
-              </h1>
+          {/* Headline */}
+          <h1
+            className="font-display text-ivory leading-[1.02] tracking-tight"
+            style={{ fontSize: "clamp(2.8rem, 5.5vw, 5rem)" }}
+          >
+            A{" "}
+            <em className="not-italic italic text-gold">sweet</em> escape
+            <br />
+            in every{" "}
+            <em className="not-italic italic text-gold">bite.</em>
+          </h1>
+
+          {/* Horizontal Product Feature Card */}
+          <div
+            className="flex flex-col sm:flex-row rounded-2xl overflow-hidden"
+            style={{
+              maxWidth: "480px",
+              background: "linear-gradient(135deg, rgba(31,90,52,0.6) 0%, rgba(18,45,28,0.88) 100%)",
+              border: "1px solid rgba(246,178,26,0.22)",
+              backdropFilter: "blur(20px)",
+              boxShadow: "0 0 0 1px rgba(246,178,26,0.05), 0 12px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(246,178,26,0.1)",
+            }}
+          >
+            {/* Left — Product image */}
+            <div
+              className="sm:w-44 flex-shrink-0 flex items-center justify-center relative overflow-hidden min-h-[140px]"
+              style={{
+                background: "linear-gradient(160deg, rgba(246,178,26,0.12) 0%, rgba(18,45,28,0.4) 100%)",
+              }}
+            >
+              <div
+                className="absolute inset-0"
+                style={{
+                  background: "radial-gradient(circle 70px at 50% 50%, rgba(246,178,26,0.18) 0%, transparent 70%)",
+                }}
+              />
+              {/* Replace /logo.png with the actual nastar product photo */}
+              <Image
+                src="/logo.png"
+                alt="Pineapple Nastar – Nastar Coco Signature"
+                width={100}
+                height={100}
+                className="relative z-10 object-contain drop-shadow-lg"
+                style={{ opacity: 0.9 }}
+              />
             </div>
 
-            {/* Subheadline */}
-            <p className="text-ivory/65 text-base md:text-lg leading-relaxed max-w-lg">
-              Soft, buttery, and filled with rich pineapple sweetness, Nastar Coco turns Indonesia’s beloved nastar into a beautifully packed treat made for gifting, sharing, and enjoying anytime.{" "}
-            </p>
+            {/* Right — Product info */}
+            <div className="flex flex-col justify-center px-5 py-4 gap-1.5">
+              <p className="text-gold/75 text-[9px] font-bold tracking-[0.22em] uppercase">
+                Signature Product
+              </p>
+              <p className="text-ivory text-base font-semibold leading-tight">
+                Pineapple Nastar
+              </p>
+              <p className="text-ivory/55 text-[13px] leading-relaxed">
+                Soft, buttery pineapple crumble cookies, beautifully packed for
+                gifting, sharing, and everyday sweet moments.
+              </p>
+            </div>
+          </div>
+
+          {/* CTAs + Trust */}
+          <div className="flex flex-col gap-5">
 
             {/* CTAs */}
-            <div className="flex items-center gap-5 pt-2">
+            <div className="flex items-center gap-5">
               <Link
                 href={WHATSAPP_URL()}
                 target="_blank"
@@ -60,27 +120,32 @@ export default function Hero() {
               </Link>
             </div>
 
-            {/* Trust indicators */}
-            <div className="flex flex-wrap items-center gap-5 pt-2">
-              {["NIB", "PIRT", "Halal", "BPOM"].map((badge) => (
+            {/* Trust row */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+              {["NIB Terdaftar", "PIRT Sertifikasi", "Halal MUI", "BPOM Terdaftar"].map((label) => (
                 <span
-                  key={badge}
-                  className="flex items-center gap-1.5 text-ivory/45 text-xs font-medium"
+                  key={label}
+                  className="flex items-center gap-1.5 text-ivory/35 text-[10px] font-medium tracking-wide"
                 >
-                  <CheckIcon />
-                  {badge}
+                  <VerifiedIcon />
+                  {label}
                 </span>
               ))}
-              <span className="text-ivory/25 text-xs">|</span>
-              <span className="text-ivory/45 text-xs">Tersedia di Food Hall & Kemchick</span>
+              <span className="text-ivory/15 text-xs hidden sm:inline select-none">|</span>
+              <span className="flex items-center gap-1.5 text-ivory/35 text-[10px] font-medium">
+                <StoreIcon />
+                Food Hall &amp; Kemchick
+              </span>
             </div>
-          </div>
 
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+/* ── Icons ── */
 
 function WaIcon() {
   return (
@@ -90,18 +155,23 @@ function WaIcon() {
   );
 }
 
-function ArrowIcon() {
+function VerifiedIcon() {
   return (
-    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-3 h-3 shrink-0 text-gold/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path
+        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }
 
-function CheckIcon() {
+function StoreIcon() {
   return (
-    <svg className="w-3 h-3 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-      <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
+    <svg className="w-3 h-3 shrink-0 text-gold/50" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M9 22V12h6v10" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
