@@ -10,12 +10,12 @@ export default function Hero() {
     >
       {/* Background — full natural height */}
       <Image
-        src="/NastarCocoBg.png"
+        src="/Firefly.png"
         alt=""
         fill
         sizes="100vw"
         quality={100}
-        className="object-cover object-center scale-[0.92]"
+        className="object-cover object-center"
         priority
       />
 
