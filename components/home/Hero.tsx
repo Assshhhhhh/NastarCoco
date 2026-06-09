@@ -6,14 +6,16 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative overflow-hidden -mt-16 md:-mt-[4.5rem] min-h-screen flex items-center"
+      className="relative overflow-hidden -mt-16 md:-mt-[4.5rem] min-h-screen flex items-center bg-green-dark"
     >
       {/* Background — full natural height */}
       <Image
-        src="/NastarCoco BG.png"
+        src="/NastarCocoBg.png"
         alt=""
         fill
-        className="object-cover object-center"
+        sizes="100vw"
+        quality={100}
+        className="object-cover object-center scale-[0.92]"
         priority
       />
 
