@@ -13,12 +13,9 @@ const NAV_LINKS = [
   { href: "/testimony", label: "Testimony" },
 ];
 
-/** Interpolate color: #4A7145 (transparent nav) → #ffffff (opaque nav) */
-function scrollColor(opacity: number): string {
-  const r = Math.round(74  + (255 - 74)  * opacity);
-  const g = Math.round(113 + (255 - 113) * opacity);
-  const b = Math.round(69  + (255 - 69)  * opacity);
-  return `rgb(${r},${g},${b})`;
+/** Always white — readable on both transparent (green bg) and opaque green navbar */
+function scrollColor(_opacity: number): string {
+  return "#ffffff";
 }
 
 export default function Header() {

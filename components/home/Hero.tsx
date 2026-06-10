@@ -12,13 +12,13 @@ export default function Hero() {
     >
       {/* Background image — unchanged */}
       <Image
-        src="/NastarCoco-final-packets-smooth-warm-shadows-4k.png"
+        src="/NastarCocoGreenBG.png"
         alt=""
         fill
         sizes="100vw"
         quality={100}
         className="object-cover"
-        style={{ objectPosition: "50% 56%" }}
+        style={{ objectPosition: "50% 30%" }}
         priority
       />
 
@@ -37,7 +37,7 @@ export default function Hero() {
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{ backgroundColor: "#F6B21A" }}
             />
-            <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "#4A7145" }}>
+            <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "#FFFDF7" }}>
               Premium Nastar Indonesia
             </p>
           </div>
@@ -45,7 +45,7 @@ export default function Hero() {
           {/* Headline — large editorial serif */}
           <h1
             className="font-display leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(2.8rem, 5.6vw, 4.75rem)", color: "#4A7145" }}
+            style={{ fontSize: "clamp(2.8rem, 5.6vw, 4.75rem)", color: "#FFFDF7" }}
           >
             The Taste of Tradition,
             <br />
@@ -59,7 +59,7 @@ export default function Hero() {
           {/* Supporting paragraph */}
           <p
             className="leading-relaxed"
-            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "#4A7145" }}
+            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "rgba(255,253,247,0.75)" }}
           >
             Delicate pineapple filling wrapped in a buttery, melt-in-your-mouth
             crust. A timeless Indonesian favorite, crafted with premium
@@ -72,7 +72,7 @@ export default function Hero() {
             {/* Primary — dark green pill */}
             <Link
               href="/menu"
-              className="group inline-flex items-center gap-2 bg-[#064B2F] text-white rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-[#043d26] active:scale-[0.98]"
+              className="group inline-flex items-center gap-2 bg-[#FFFDF7] text-[#064B2F] rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-white active:scale-[0.98]"
             >
               Shop Now
               <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -85,8 +85,8 @@ export default function Hero() {
                 const navH = document.querySelector("header")?.offsetHeight ?? 0;
                 if (el) window.scrollTo({ top: el.offsetTop - navH, behavior: "smooth" });
               }}
-              className="text-sm font-semibold tracking-[0.12em] uppercase border-b-2 border-[#064B2F] pb-0.5 transition-colors duration-200 hover:text-[#043d26] hover:border-[#043d26] cursor-pointer bg-transparent"
-              style={{ color: "#064B2F" }}
+              className="text-sm font-semibold tracking-[0.12em] uppercase border-b-2 border-ivory/60 pb-0.5 transition-colors duration-200 hover:border-ivory cursor-pointer bg-transparent"
+              style={{ color: "#FFFDF7" }}
             >
               Our Story
             </button>
