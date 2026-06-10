@@ -11,7 +11,6 @@ const NAV_LINKS = [
   { href: "/retail-partner", label: "Retail Partner" },
   { href: "/promo-events", label: "Promo & Events" },
   { href: "/testimony", label: "Testimony" },
-  { href: "/contact", label: "Contact" },
 ];
 
 /** Interpolate color: #4A7145 (transparent nav) → #ffffff (opaque nav) */
@@ -29,9 +28,12 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const hero = document.getElementById("hero");
+      const hero   = document.getElementById("hero");
+      const header = document.querySelector("header");
       if (!hero) { setOpacity(1); return; }
-      setOpacity(Math.min(window.scrollY / hero.offsetHeight, 1));
+      const navH     = header ? header.offsetHeight : 0;
+      const fadeEnd  = hero.offsetHeight - navH;
+      setOpacity(fadeEnd > 0 ? Math.min(window.scrollY / fadeEnd, 1) : 1);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
@@ -89,7 +91,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-10">
+            <nav className="hidden lg:flex items-center gap-10 mr-16">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}

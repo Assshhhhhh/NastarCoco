@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { WHATSAPP_URL } from "@/data/site";
@@ -10,20 +12,20 @@ export default function Hero() {
     >
       {/* Background image — unchanged */}
       <Image
-        src="/NastarCoco 4k bg.png"
+        src="/NastarCoco-final-packets-smooth-warm-shadows-4k.png"
         alt=""
         fill
         sizes="100vw"
         quality={100}
         className="object-cover"
-        style={{ objectPosition: "56% 56%" }}
+        style={{ objectPosition: "50% 56%" }}
         priority
       />
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div
-          className="flex flex-col gap-8 pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:justify-center"
+          className="flex flex-col gap-8 pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:justify-center lg:-translate-y-16"
           style={{ maxWidth: "620px" }}
         >
 
@@ -42,14 +44,14 @@ export default function Hero() {
 
           {/* Headline — large editorial serif */}
           <h1
-            className="font-display text-ivory leading-[1.05] tracking-tight"
-            style={{ fontSize: "clamp(3.2rem, 6.5vw, 5.5rem)" }}
+            className="font-display leading-[1.05] tracking-tight"
+            style={{ fontSize: "clamp(2.8rem, 5.6vw, 4.75rem)", color: "#4A7145" }}
           >
-            A Sweet escape,
+            The Taste of Tradition,
             <br />
-            in every{" "}
+            Made with{" "}
             <em className="not-italic italic" style={{ color: "#F6B21A" }}>
-              Bite.
+              Love.
             </em>
           </h1>
           </div>
@@ -64,6 +66,31 @@ export default function Hero() {
             ingredients.
           </p>
 
+
+          {/* CTA group */}
+          <div className="flex flex-wrap items-center gap-6" style={{ marginTop: "-16px" }}>
+            {/* Primary — dark green pill */}
+            <Link
+              href="/menu"
+              className="group inline-flex items-center gap-2 bg-[#064B2F] text-white rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-[#043d26] active:scale-[0.98]"
+            >
+              Shop Now
+              <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+            </Link>
+
+            {/* Secondary — text link with underline */}
+            <button
+              onClick={() => {
+                const el = document.getElementById("story");
+                const navH = document.querySelector("header")?.offsetHeight ?? 0;
+                if (el) window.scrollTo({ top: el.offsetTop - navH, behavior: "smooth" });
+              }}
+              className="text-sm font-semibold tracking-[0.12em] uppercase border-b-2 border-[#064B2F] pb-0.5 transition-colors duration-200 hover:text-[#043d26] hover:border-[#043d26] cursor-pointer bg-transparent"
+              style={{ color: "#064B2F" }}
+            >
+              Our Story
+            </button>
+          </div>
 
           {/* TODO: Add trust strip back — NIB Terdaftar, PIRT Sertifikasi, Halal MUI, BPOM Terdaftar, Food Hall & Kemchick */}
 
