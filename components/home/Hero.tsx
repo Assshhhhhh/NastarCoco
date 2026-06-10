@@ -58,7 +58,7 @@ export default function Hero() {
 
           {/* Supporting paragraph */}
           <p
-            className="leading-relaxed"
+            className="leading-relaxed -mt-4"
             style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "rgba(255,253,247,0.75)" }}
           >
             Delicate pineapple filling wrapped in a buttery, melt-in-your-mouth
@@ -68,14 +68,14 @@ export default function Hero() {
 
 
           {/* CTA group */}
-          <div className="flex flex-wrap items-center gap-6" style={{ marginTop: "-16px" }}>
+          <div className="flex flex-wrap items-center gap-6" style={{ marginTop: "-10px" }}>
             {/* Primary — dark green pill */}
             <Link
               href="/menu"
-              className="group inline-flex items-center gap-2 bg-[#FFFDF7] text-[#064B2F] rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-colors duration-200 hover:bg-white active:scale-[0.98]"
+              className="group inline-flex items-center gap-2 bg-[#FFFDF7] text-[#064B2F] rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-all duration-200 hover:bg-[#064B2F] hover:text-white active:scale-[0.98]"
             >
               Shop Now
-              <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+              <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 relative -top-px">→</span>
             </Link>
 
             {/* Secondary — text link with underline */}
@@ -85,10 +85,15 @@ export default function Hero() {
                 const navH = document.querySelector("header")?.offsetHeight ?? 0;
                 if (el) window.scrollTo({ top: el.offsetTop - navH, behavior: "smooth" });
               }}
-              className="text-sm font-semibold tracking-[0.12em] uppercase border-b-2 border-ivory/60 pb-0.5 transition-colors duration-200 hover:border-ivory cursor-pointer bg-transparent"
-              style={{ color: "#FFFDF7" }}
+              className="our-story-btn group text-sm font-semibold tracking-[0.12em] uppercase pb-0.5 transition-colors duration-200 cursor-pointer bg-transparent text-white"
             >
-              Our Story
+              {"Our Story".split("").map((char, i) => (
+                <span
+                  key={i}
+                  className="inline-block transition-colors duration-300 group-hover:text-[#F6B21A]"
+                  style={{ transitionDelay: `${i * 40}ms`, whiteSpace: char === " " ? "pre" : undefined }}
+                >{char}</span>
+              ))}
             </button>
           </div>
 

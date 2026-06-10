@@ -117,19 +117,28 @@ a.nav-link {
   position: relative;
   text-decoration: none;
 }
-a.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 0;
-  height: 1.5px;
-  background-color: #F6B21A;
-  transition: width 250ms ease;
-}
-a.nav-link:hover::after { width: 100%; }
+/* underline now rendered as a child span — see Header.tsx */
 
 .hover-whatsapp:hover { color: #25D366; }
+
+/* Our Story — animated underline fills left to right */
+.our-story-btn {
+  position: relative;
+}
+.our-story-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #F6B21A;
+  transition: width 350ms ease;
+}
+.our-story-btn:hover::after {
+  width: 100%;
+}
+
 
 /* Hero CTA buttons */
 .hero-order-btn {

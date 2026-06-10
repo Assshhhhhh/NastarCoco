@@ -5,12 +5,12 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "/", label: "Home" },
-  { href: "/menu", label: "Menu" },
-  { href: "/cocoffee", label: "Cocoffee" },
-  { href: "/retail-partner", label: "Retail Partner" },
-  { href: "/promo-events", label: "Promo & Events" },
-  { href: "/testimony", label: "Testimony" },
+  { href: "/", label: "Home", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
+  { href: "/menu", label: "Menu", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
+  { href: "/cocoffee", label: "Cocoffee", hoverColor: "#C4956A", underlineColor: "#C4956A" },
+  { href: "/retail-partner", label: "Retail Partner", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
+  { href: "/promo-events", label: "Promo & Events", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
+  { href: "/testimony", label: "Testimony", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
 ];
 
 /** Always white — readable on both transparent (green bg) and opaque green navbar */
@@ -21,6 +21,7 @@ function scrollColor(_opacity: number): string {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -93,13 +94,32 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="nav-link text-sm font-semibold tracking-[0.15em] uppercase"
-                  style={{
-                    color: textFill,
-                    transition: "color 120ms linear",
-                  }}
+                  className="relative font-semibold tracking-[0.15em] uppercase"
+                  style={{ color: textFill, fontSize: "14.5px" }}
+                  onMouseEnter={() => setHoveredLink(link.href)}
+                  onMouseLeave={() => setHoveredLink(null)}
                 >
-                  {link.label}
+                  {link.label.split("").map((char, i) => (
+                    <span
+                      key={i}
+                      className="inline-block"
+                      style={{
+                        whiteSpace: char === " " ? "pre" : undefined,
+                        color: hoveredLink === link.href ? link.hoverColor : textFill,
+                        transition: "color 300ms ease",
+                        transitionDelay: hoveredLink === link.href ? `${i * 35}ms` : "0ms",
+                      }}
+                    >{char}</span>
+                  ))}
+                  {/* Underline */}
+                  <span
+                    className="absolute left-0 bottom-[-3px] h-[1.5px]"
+                    style={{
+                      backgroundColor: link.underlineColor,
+                      width: hoveredLink === link.href ? "100%" : "0%",
+                      transition: "width 250ms ease",
+                    }}
+                  />
                 </Link>
               ))}
             </nav>
