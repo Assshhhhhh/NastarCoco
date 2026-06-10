@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { href: "/", label: "Home", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/menu", label: "Menu", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
-  { href: "/cocoffee", label: "Cocoffee", hoverColor: "#C4956A", underlineColor: "#C4956A" },
+  { href: "/cocoffee", label: "Cocoffee", hoverColor: "#E8A870", underlineColor: "#E8A870" },
   { href: "/retail-partner", label: "Retail Partner", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/promo-events", label: "Promo & Events", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/testimony", label: "Testimony", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
@@ -107,7 +107,7 @@ export default function Header() {
                         whiteSpace: char === " " ? "pre" : undefined,
                         color: hoveredLink === link.href ? link.hoverColor : textFill,
                         transition: "color 300ms ease",
-                        transitionDelay: hoveredLink === link.href ? `${i * 35}ms` : "0ms",
+                        transitionDelay: `${i * 35}ms`,
                       }}
                     >{char}</span>
                   ))}
