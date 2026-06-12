@@ -5,7 +5,8 @@
       "name": "nastar-coco-dev",
       "runtimeExecutable": "pnpm",
       "runtimeArgs": ["dev"],
-      "port": 3000
+      "port": 3000,
+      "autoPort": true
     }
   ]
 }

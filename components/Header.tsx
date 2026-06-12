@@ -7,7 +7,7 @@ import { usePathname } from "next/navigation";
 const NAV_LINKS = [
   { href: "/", label: "Home", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/menu", label: "Menu", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
-  { href: "/cocoffee", label: "Cocoffee", hoverColor: "#E8A870", underlineColor: "#E8A870" },
+  { href: "/cocoffee", label: "Cocoffee", hoverColor: "#C4743A", underlineColor: "#C4743A" },
   { href: "/retail-partner", label: "Retail Partner", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/promo-events", label: "Promo & Events", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
   { href: "/testimony", label: "Testimony", hoverColor: "#F6B21A", underlineColor: "#F6B21A" },
