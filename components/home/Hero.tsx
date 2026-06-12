@@ -1,10 +1,22 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { WHATSAPP_URL } from "@/data/site";
 
+function fadeUp(mounted: boolean, delay: number): React.CSSProperties {
+  return {
+    opacity: mounted ? 1 : 0,
+    transform: mounted ? "translateY(0px)" : "translateY(24px)",
+    transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
+  };
+}
+
 export default function Hero() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => { const t = setTimeout(() => setMounted(true), 80); return () => clearTimeout(t); }, []);
+
   return (
     <section
       id="hero"
@@ -30,7 +42,7 @@ export default function Hero() {
         >
 
           {/* Eyebrow + Headline group — tight gap between them */}
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-3" style={fadeUp(mounted, 200)}>
           {/* Eyebrow — dot + uppercase label */}
           <div className="flex items-center gap-2.5">
             <span
@@ -38,7 +50,7 @@ export default function Hero() {
               style={{ backgroundColor: "#F6B21A" }}
             />
             <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "#FFFDF7" }}>
-              Premium Nastar Indonesia
+              Premium Indonesian Nastar
             </p>
           </div>
 
@@ -59,7 +71,7 @@ export default function Hero() {
           {/* Supporting paragraph */}
           <p
             className="leading-relaxed -mt-4"
-            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "rgba(255,253,247,0.75)" }}
+            style={{ fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)", maxWidth: "420px", color: "rgba(255,253,247,0.75)", ...fadeUp(mounted, 380) }}
           >
             Delicate pineapple filling wrapped in a buttery, melt-in-your-mouth
             crust. A timeless Indonesian favorite, crafted with premium
@@ -68,7 +80,7 @@ export default function Hero() {
 
 
           {/* CTA group */}
-          <div className="flex flex-wrap items-center gap-6" style={{ marginTop: "-10px" }}>
+          <div className="flex flex-wrap items-center gap-6" style={{ marginTop: "-10px", ...fadeUp(mounted, 540) }}>
             {/* Primary — dark green pill */}
             <Link
               href="/menu"

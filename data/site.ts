@@ -1,8 +1,8 @@
 export const SITE = {
   name: "Nastar Coco",
-  tagline: "Golden nastar yang terasa seperti rumah.",
+  tagline: "The nastar that feels like home.",
   whatsapp: "628XXXXXXXXXX",
-  whatsappMessage: "Halo Nastar Coco! Saya ingin order nastar 🍍",
+  whatsappMessage: "Hi Nastar Coco! I'd like to place an order 🍍",
   instagram: "https://instagram.com/nastarcoco",
   instagramHandle: "@nastarcoco",
   email: "hello@nastarcoco.id",
@@ -10,7 +10,7 @@ export const SITE = {
   address: "[Alamat Nastar Coco — akan diupdate]",
   googleMapsUrl: "#",
   cocoffeeWhatsapp: "628XXXXXXXXXX",
-  cocoffeeHours: "Senin – Minggu: 08.00 – 20.00",
+  cocoffeeHours: "Mon – Sun: 08.00 – 20.00",
 };
 
 export const WHATSAPP_URL = (msg?: string) =>

@@ -27,3 +27,5 @@ export const GROUP_LABELS: Record<TeamMember["group"], string> = {
   cocoffee: "Cocoffee Team",
   operations: "Operations Team",
 };
+
+export const GROUP_LABELS_EN = GROUP_LABELS;

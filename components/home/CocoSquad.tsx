@@ -1,48 +1,69 @@
-import SectionHeading from "@/components/SectionHeading";
 import { TEAM, GROUP_LABELS, type TeamMember } from "@/data/team";
 
-const GROUP_ICONS: Record<TeamMember["group"], string> = {
-  nastar: "🧁",
-  cocoffee: "☕",
-  operations: "📦",
-};
-
-const GROUPS: TeamMember["group"][] = ["nastar", "cocoffee", "operations"];
+const GROUPS: { key: TeamMember["group"]; num: string }[] = [
+  { key: "nastar", num: "01" },
+  { key: "cocoffee", num: "02" },
+  { key: "operations", num: "03" },
+];
 
 export default function CocoSquad() {
   return (
     <section className="section-gold-warm py-24 md:py-32">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
         {/* Heading */}
-        <div className="text-center mb-16">
-          <SectionHeading
-            badge="Tim Kami"
-            title="Meet the Coco Squad."
-            subtitle="Tim di balik nastar, kopi, dapur, logistik, dan pengalaman hangat Nastar Coco."
-            centered
-            serif
-          />
+        <div className="flex flex-col items-center text-center gap-3 mb-6">
+          <div className="flex items-center gap-2.5">
+            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: "#F6B21A" }} />
+            <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "#1F5A34" }}>
+              Coco Squad
+            </p>
+          </div>
+          <h2
+            className="font-display leading-[1.1] tracking-tight"
+            style={{ fontSize: "clamp(2.1rem, 3.8vw, 3.25rem)", color: "#33211A" }}
+          >
+            Young people, building
+            <br />
+            something{" "}
+            <em className="not-italic italic" style={{ color: "#1F5A34" }}>
+              serious.
+            </em>
+          </h2>
         </div>
 
         {/* Intro copy */}
-        <p className="text-espresso/60 text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed">
-          Coco Squad adalah tim muda di balik setiap proses Nastar Coco — dari resep, baking,
-          kopi, pelayanan, administrasi, hingga logistik. Bersama, kami membangun brand yang
-          bukan hanya menjual nastar, tetapi menciptakan pengalaman hangat yang bisa tumbuh
-          lebih jauh.
+        <p
+          className="text-base text-center max-w-2xl mx-auto mb-16 leading-relaxed"
+          style={{ color: "rgba(51,33,26,0.6)" }}
+        >
+          The Coco Squad is the young team behind every part of Nastar Coco — from recipes and
+          baking to coffee, service, administration, and logistics. Together, we are building a
+          brand that does more than sell nastar. We create a warm experience that can grow
+          into something much bigger.
         </p>
 
-        {/* Groups */}
-        <div className="flex flex-col gap-16">
-          {GROUPS.map((group) => {
-            const members = TEAM.filter((m) => m.group === group);
+        {/* Divisions */}
+        <div className="flex flex-col gap-14">
+          {GROUPS.map(({ key, num }) => {
+            const members = TEAM.filter((m) => m.group === key);
             return (
-              <div key={group}>
-                {/* Group label */}
-                <div className="flex items-center gap-3 mb-8">
-                  <span className="text-xl">{GROUP_ICONS[group]}</span>
-                  <h3 className="text-espresso font-bold text-lg">{GROUP_LABELS[group]}</h3>
-                  <div className="flex-1 h-px bg-espresso/15" />
+              <div key={key}>
+                {/* Division header */}
+                <div className="flex items-baseline gap-4 mb-7">
+                  <span className="font-display leading-none" style={{ color: "#C8900C", fontSize: "1.5rem" }}>
+                    {num}
+                  </span>
+                  <h3
+                    className="text-[13px] font-semibold tracking-[0.2em] uppercase"
+                    style={{ color: "#33211A" }}
+                  >
+                    {GROUP_LABELS[key]}
+                  </h3>
+                  <span className="text-[11px] font-medium" style={{ color: "rgba(51,33,26,0.4)" }}>
+                    {members.length} people
+                  </span>
+                  <div className="flex-1 h-px self-center" style={{ backgroundColor: "rgba(51,33,26,0.12)" }} />
                 </div>
 
                 {/* Member cards */}
@@ -50,21 +71,35 @@ export default function CocoSquad() {
                   {members.map((member) => (
                     <div
                       key={member.name}
-                      className="card-gold hover-lift p-5 flex flex-col items-center gap-3 text-center"
+                      className="hover-lift rounded-2xl p-6 flex flex-col items-center gap-4 text-center"
+                      style={{
+                        backgroundColor: "#FFFDF7",
+                        border: "1px solid #E8D5B0",
+                        boxShadow: "0 4px 16px rgba(51,33,26,0.05)",
+                      }}
                     >
-                      {/* Avatar placeholder */}
+                      {/* Avatar — ringed circle, echoing the journey timeline */}
                       <div
-                        className="w-16 h-16 rounded-full flex items-center justify-center text-xl font-bold text-green-dark shrink-0"
+                        className="w-14 h-14 rounded-full flex items-center justify-center shrink-0 font-display"
                         style={{
-                          background: "linear-gradient(135deg, #F6B21A33 0%, #F4E6C8 100%)",
-                          border: "2px solid rgba(31,90,52,0.15)",
+                          backgroundColor: "#1F5A34",
+                          color: "#F6B21A",
+                          fontSize: "1.35rem",
+                          boxShadow: "0 0 0 3px #FFFDF7, 0 0 0 3.7px rgba(31,90,52,0.45)",
                         }}
                       >
                         {member.name.charAt(0)}
                       </div>
                       <div>
-                        <p className="text-espresso font-semibold text-sm">{member.name}</p>
-                        <p className="text-espresso/55 text-xs mt-0.5 leading-snug">{member.role}</p>
+                        <p className="font-semibold text-sm" style={{ color: "#33211A" }}>
+                          {member.name}
+                        </p>
+                        <p
+                          className="text-[11px] font-medium tracking-[0.1em] uppercase mt-1 leading-snug"
+                          style={{ color: "rgba(51,33,26,0.5)" }}
+                        >
+                          {member.role}
+                        </p>
                       </div>
                     </div>
                   ))}
@@ -74,12 +109,22 @@ export default function CocoSquad() {
           })}
         </div>
 
-        {/* Investor-friendly tagline */}
-        <div className="mt-20 text-center">
-          <p className="text-espresso/50 text-sm italic max-w-lg mx-auto leading-relaxed">
-            "Dibangun oleh anak muda dengan rasa, sistem, dan mimpi yang serius."
+        {/* Closing quote */}
+        <div className="mt-20 flex flex-col items-center text-center gap-4">
+          <span className="font-display leading-none select-none" style={{ color: "#C8900C", fontSize: "3.5rem" }} aria-hidden>
+            &ldquo;
+          </span>
+          <p
+            className="font-display italic max-w-xl leading-relaxed -mt-6"
+            style={{ color: "rgba(51,33,26,0.8)", fontSize: "1.35rem" }}
+          >
+            Built by young people with craft, systems, and dreams that mean business.
           </p>
+          <span className="text-[11px] font-semibold tracking-[0.22em] uppercase" style={{ color: "rgba(51,33,26,0.45)" }}>
+            — Coco Squad
+          </span>
         </div>
+
       </div>
     </section>
   );
