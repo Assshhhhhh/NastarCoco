@@ -37,7 +37,7 @@ export default function Hero() {
       {/* Main Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div
-          className="flex flex-col gap-8 pt-32 pb-20 lg:pt-0 lg:pb-0 lg:min-h-screen lg:justify-center lg:-translate-y-16"
+          className="flex flex-col gap-8 pt-36 pb-20 lg:pt-48 lg:pb-16 lg:min-h-screen"
           style={{ maxWidth: "620px" }}
         >
 
