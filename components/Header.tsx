@@ -22,6 +22,7 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+  const [navMounted, setNavMounted] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -37,6 +38,8 @@ export default function Header() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
+
+  useEffect(() => { const t = setTimeout(() => setNavMounted(true), 80); return () => clearTimeout(t); }, []);
 
   const bgColor      = `rgba(74, 113, 69, ${opacity})`;
   const mobileMenuBg = `rgba(74, 113, 69, 0.98)`;
@@ -127,12 +130,20 @@ export default function Header() {
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-10 mr-16">
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map((link, idx) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   className="relative font-semibold tracking-[0.15em] uppercase"
-                  style={{ color: textFill, fontSize: "14.5px" }}
+                  style={{
+                    color: textFill,
+                    fontSize: "14.5px",
+                    opacity: navMounted ? 1 : 0,
+                    transform: navMounted ? "translateY(0)" : "translateY(5px)",
+                    transition: navMounted
+                      ? `opacity 0.5s cubic-bezier(0.4,0,0.2,1) ${300 + idx * 100}ms, transform 0.5s cubic-bezier(0.4,0,0.2,1) ${300 + idx * 100}ms`
+                      : "none",
+                  }}
                   onMouseEnter={() => setHoveredLink(link.href)}
                   onMouseLeave={() => setHoveredLink(null)}
                 >
