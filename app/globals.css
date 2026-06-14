@@ -29,6 +29,15 @@
 /* Base */
 html { scroll-behavior: smooth; }
 
+:root {
+  --navbar-height: 7rem; /* 112px — h-28 on mobile */
+}
+@media (min-width: 768px) {
+  :root {
+    --navbar-height: 8rem; /* 128px — h-32 on desktop */
+  }
+}
+
 body {
   background-color: #FFFDF7;
   color: #33211A;
@@ -225,9 +234,7 @@ a.nav-link {
 
 .floor-panel:hover {
   transform: translateY(-7px) scale(1.015);
-  box-shadow: 0 22px 48px rgba(78, 47, 32, 0.5);
-  border-color: rgba(255, 247, 232, 0.7) !important;
-  filter: brightness(1.1);
+  box-shadow: 0 24px 52px rgba(51, 33, 26, 0.28);
 }
 
 .floor-panel-arrow {
@@ -240,12 +247,11 @@ a.nav-link {
 }
 
 .floor-panel-desc {
-  color: rgba(255, 247, 232, 0.55);
-  transition: color 220ms ease;
+  transition: opacity 200ms ease;
 }
 
 .floor-panel:hover .floor-panel-desc {
-  color: rgba(255, 247, 232, 0.84);
+  opacity: 1;
 }
 
 /* Cocoffee preview — CTA button */
