@@ -39,8 +39,31 @@ const TRUST_ITEMS = ["NIB Registered", "PIRT Certified", "Halal MUI", "BPOM Regi
 
 export default function FinalCTA() {
   return (
-    <section className="section-ivory py-24 md:py-32">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      className="relative overflow-hidden py-24 md:py-32"
+      style={{
+        background: "linear-gradient(180deg, #FBF5EA 0%, #F3F0E1 52%, #E8EEDF 100%)",
+        color: "#33211A",
+      }}
+    >
+      {/* Top seam — eases in from the warm Coco Squad above */}
+      <div
+        className="absolute top-0 inset-x-0 h-24 pointer-events-none"
+        aria-hidden
+        style={{ background: "linear-gradient(to bottom, rgba(251,226,188,0.7) 0%, transparent 100%)" }}
+      />
+      {/* Subtle grain */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        aria-hidden
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='fcs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fcs)'/%3E%3C/svg%3E")`,
+          backgroundSize: "220px",
+          opacity: 0.025,
+          mixBlendMode: "multiply",
+        }}
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Deep green invitation card — bookends the hero */}
         <div

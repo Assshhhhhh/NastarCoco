@@ -112,6 +112,13 @@ export default function CocoSquad() {
         }}
       />
 
+      {/* Top seam — eases in from the Cocoffee mocha above */}
+      <div
+        className="absolute top-0 inset-x-0 h-24 pointer-events-none"
+        aria-hidden
+        style={{ background: "linear-gradient(to bottom, rgba(216,192,154,0.7) 0%, transparent 100%)" }}
+      />
+
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}

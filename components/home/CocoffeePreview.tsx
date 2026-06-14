@@ -223,11 +223,11 @@ export default function CocoffeePreview() {
         }}
       />
 
-      {/* Top blend edge — from ivory section above */}
+      {/* Top seam — eases in from the warm Brand Story above */}
       <div
-        className="absolute top-0 inset-x-0 h-12 pointer-events-none"
+        className="absolute top-0 inset-x-0 h-16 pointer-events-none"
         aria-hidden
-        style={{ background: "linear-gradient(to bottom, rgba(250,244,233,0.7) 0%, transparent 100%)" }}
+        style={{ background: "linear-gradient(to bottom, rgba(246,234,214,0.8) 0%, transparent 100%)" }}
       />
 
       <div className="relative z-10 h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col py-6 md:py-8 gap-5 md:gap-6">
