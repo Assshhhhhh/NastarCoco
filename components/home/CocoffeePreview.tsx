@@ -1,123 +1,122 @@
 import Link from "next/link";
-import { SITE } from "@/data/site";
 
 const FLOORS = [
-  { floor: "1F", name: "Nastar Coco Lab", desc: "Production, R&D, and quality control" },
-  { floor: "2F", name: "Cocoffee & Menu", desc: "Specialty café, coffee bar & desserts" },
-  { floor: "3F", name: "Kitchen & Office", desc: "Operations, team workspace & brand growth" },
-  { floor: "4F", name: "Class & Entertainment", desc: "Community hub, workshops & events" },
+  {
+    floor: "1F",
+    name: "Nastar Coco Lab",
+    desc: "Production, R&D, and quality control.",
+    href: "/cocoffee#floor-1",
+    bg: "#B07040",   // warm amber — lightest
+  },
+  {
+    floor: "2F",
+    name: "Cocoffee & Menu",
+    desc: "Specialty café, coffee bar, and desserts.",
+    href: "/cocoffee#floor-2",
+    bg: "#5C3520",   // deep espresso — darkest
+  },
+  {
+    floor: "3F",
+    name: "Kitchen & Office",
+    desc: "Operations, team workspace, and brand growth.",
+    href: "/cocoffee#floor-3",
+    bg: "#986040",   // medium caramel
+  },
+  {
+    floor: "4F",
+    name: "Class & Entertainment",
+    desc: "Community hub, workshops, and events.",
+    href: "/cocoffee#floor-4",
+    bg: "#3E2010",   // near-black espresso
+  },
 ];
 
 export default function CocoffeePreview() {
   return (
-    <section className="relative overflow-hidden py-24 md:py-32" style={{ backgroundColor: "#122D1C" }}>
-      {/* Ambient glows — warm mocha light, echoing the hero's depth */}
+    <section
+      className="relative overflow-hidden py-20 md:py-24"
+      style={{
+        background: [
+          // Warm amber glow from centre — feels like overhead café light
+          "radial-gradient(ellipse 95% 70% at 50% 30%, rgba(196,140,88,0.36) 0%, transparent 62%)",
+          // Deep corners for depth and vignette
+          "radial-gradient(ellipse 55% 60% at 0% 100%, rgba(30,12,4,0.72) 0%, transparent 55%)",
+          "radial-gradient(ellipse 50% 55% at 100% 100%, rgba(30,12,4,0.68) 0%, transparent 55%)",
+          // Base: rich coffee brown, consistent
+          "linear-gradient(165deg, #7A4A2A 0%, #895737 38%, #9C6A44 68%, #7A4A2A 100%)",
+        ].join(", "),
+      }}
+    >
+      {/* Top edge fade — smooth transition from section above */}
       <div
-        className="absolute -top-40 -right-40 w-[34rem] h-[34rem] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(232,168,112,0.12) 0%, transparent 70%)" }}
-      />
-      <div
-        className="absolute -bottom-48 -left-32 w-[30rem] h-[30rem] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(246,178,26,0.08) 0%, transparent 70%)" }}
-      />
-      {/* Watermark */}
-      <span
-        className="hidden lg:block absolute -bottom-12 right-0 font-display italic select-none pointer-events-none leading-none"
-        style={{ fontSize: "12rem", color: "rgba(255,253,247,0.035)" }}
+        className="absolute top-0 inset-x-0 h-20 pointer-events-none"
         aria-hidden
-      >
-        Cocoffee
-      </span>
+        style={{
+          background: "linear-gradient(to bottom, rgba(30,12,4,0.5) 0%, transparent 100%)",
+        }}
+      />
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-14 lg:gap-20 items-center">
 
-          {/* Left — Chapter narrative */}
-          <div className="flex flex-col gap-8">
-            <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: "#E8A870" }} />
-                <p className="text-[13px] font-semibold tracking-[0.2em] uppercase" style={{ color: "rgba(255,253,247,0.7)" }}>
-                  A New Chapter — Cocoffee by Nastar Coco
-                </p>
-              </div>
+        {/* Eyebrow */}
+        <div className="flex items-center gap-3 mb-8 lg:mb-10">
+          <span
+            className="w-6 h-px shrink-0"
+            style={{ backgroundColor: "#F6B21A" }}
+          />
+          <p
+            className="text-[11px] font-semibold tracking-[0.22em] uppercase"
+            style={{ color: "rgba(255,247,232,0.58)" }}
+          >
+            A New Chapter — Cocoffee by Nastar Coco
+          </p>
+        </div>
 
-              <h2
-                className="font-display leading-[1.1] tracking-tight"
-                style={{ fontSize: "clamp(2.1rem, 3.8vw, 3.25rem)", color: "#FFFDF7" }}
-              >
-                From the warmth of the oven,
-                <br />
-                growing into{" "}
-                <em className="not-italic italic" style={{ color: "#E8A870" }}>
-                  specialty coffee.
-                </em>
-              </h2>
-            </div>
-
-            <p className="text-base leading-relaxed max-w-lg" style={{ color: "rgba(255,253,247,0.65)" }}>
-              Cocoffee is proof that Nastar Coco keeps growing — from a beloved pastry brand
-              into a fuller ecosystem: specialty coffee, a café experience, a production kitchen,
-              and a creative space for learning and gathering.
-            </p>
-
-            {/* CTA — same pill language as the hero */}
-            <div className="flex flex-wrap items-center gap-6">
-              <Link
-                href="/cocoffee"
-                className="group inline-flex items-center gap-2 bg-[#FFFDF7] text-[#064B2F] rounded-full px-7 py-4 text-sm font-semibold tracking-[0.12em] uppercase transition-all duration-200 hover:bg-[#064B2F] hover:text-white active:scale-[0.98]"
-              >
-                Explore Cocoffee
-                <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 relative -top-px">→</span>
-              </Link>
-
-              <span className="flex items-center gap-2.5 text-[13px] font-medium" style={{ color: "rgba(255,253,247,0.55)" }}>
-                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#E8A870" }} />
-                Open {SITE.cocoffeeHours}
-              </span>
-            </div>
-          </div>
-
-          {/* Right — The building, floor by floor (top floor first) */}
-          <div className="flex flex-col gap-3.5">
-            <p
-              className="text-[11px] font-semibold tracking-[0.22em] uppercase mb-1.5"
-              style={{ color: "rgba(255,253,247,0.45)" }}
+        {/* Floor panels: full-width, 4 across on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-4">
+          {FLOORS.map((f) => (
+            <Link
+              key={f.floor}
+              href={f.href}
+              className="floor-panel flex flex-col justify-between rounded-2xl p-5 sm:p-6 min-h-[360px] sm:min-h-[460px] lg:min-h-[580px]"
+              style={{
+                backgroundColor: f.bg,
+                border: "1.5px solid rgba(255,247,232,0.3)",
+              }}
             >
-              One building, four floors of story
-            </p>
-            {[...FLOORS].reverse().map((f) => (
-              <div
-                key={f.floor}
-                className="flex items-center gap-5 rounded-2xl p-5 transition-colors duration-200 hover:bg-[rgba(255,253,247,0.09)]"
+              {/* Top: floor number */}
+              <span
+                className="font-display font-bold leading-none"
                 style={{
-                  backgroundColor: "rgba(255,253,247,0.05)",
-                  border: "1px solid rgba(255,253,247,0.1)",
+                  fontSize: "clamp(2.6rem, 4.4vw, 3.6rem)",
+                  color: "rgba(255,247,232,0.9)",
                 }}
               >
-                <span
-                  className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 font-display"
-                  style={{
-                    backgroundColor: "rgba(232,168,112,0.14)",
-                    color: "#E8A870",
-                    fontSize: "1.05rem",
-                  }}
-                >
-                  {f.floor}
-                </span>
-                <div>
-                  <p className="font-display" style={{ color: "#FFFDF7", fontSize: "1.1rem" }}>
-                    {f.name}
-                  </p>
-                  <p className="text-sm mt-0.5" style={{ color: "rgba(255,253,247,0.5)" }}>
-                    {f.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+                {f.floor}
+              </span>
 
+              {/* Bottom: name, description, arrow */}
+              <div className="flex flex-col gap-1.5">
+                <p
+                  className="font-display leading-snug"
+                  style={{ fontSize: "1rem", color: "#FFF7E8" }}
+                >
+                  {f.name}
+                </p>
+                <p className="floor-panel-desc text-[12px] leading-snug">
+                  {f.desc}
+                </p>
+                <span
+                  className="floor-panel-arrow mt-2 text-[13px] font-semibold"
+                  style={{ color: "#F6B21A" }}
+                >
+                  Explore floor →
+                </span>
+              </div>
+            </Link>
+          ))}
         </div>
+
       </div>
     </section>
   );
