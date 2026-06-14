@@ -41,8 +41,8 @@ export default function Header() {
 
   useEffect(() => { const t = setTimeout(() => setNavMounted(true), 80); return () => clearTimeout(t); }, []);
 
-  const bgColor      = `rgba(74, 113, 69, ${opacity})`;
-  const mobileMenuBg = `rgba(74, 113, 69, 0.98)`;
+  const bgColor      = `linear-gradient(180deg, rgba(74,113,69,${opacity}) 0%, rgba(60,92,57,${opacity}) 100%)`;
+  const mobileMenuBg = `linear-gradient(180deg, rgba(74,113,69,0.98) 0%, rgba(60,92,57,0.98) 100%)`;
   const blurAmount   = opacity > 0 ? `blur(${12 * opacity}px)` : "none";
   const textFill     = scrollColor(opacity);
 
@@ -51,10 +51,10 @@ export default function Header() {
       <header
         className="fixed top-0 left-0 right-0 z-50"
         style={{
-          backgroundColor: bgColor,
+          background: bgColor,
           backdropFilter: blurAmount,
           boxShadow: opacity > 0.5 ? `0 1px 0 rgba(255,255,255,${opacity * 0.08})` : "none",
-          transition: "background-color 120ms linear, backdrop-filter 120ms linear, box-shadow 120ms linear",
+          transition: "background 120ms linear, backdrop-filter 120ms linear, box-shadow 120ms linear",
         }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -187,7 +187,7 @@ export default function Header() {
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="lg:hidden border-t border-ivory/10" style={{ backgroundColor: mobileMenuBg }}>
+          <div className="lg:hidden border-t border-ivory/10" style={{ background: mobileMenuBg }}>
             <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <Link

@@ -5,27 +5,27 @@ export type TeamMember = {
 };
 
 export const TEAM: TeamMember[] = [
-  // Nastar Coco Team
-  { name: "Nikolas", role: "Master of Baker", group: "nastar" },
+  // Nastar Coco Lab
+  { name: "Nikolas", role: "Master Baker", group: "nastar" },
   { name: "Nita", role: "Baker", group: "nastar" },
   { name: "Yanti", role: "Assistant Nastar Coco", group: "nastar" },
 
-  // Cocoffee Team
-  { name: "Fabian", role: "Cocoffee Specialty", group: "cocoffee" },
+  // Cocoffee Bar
+  { name: "Fabian", role: "Cocoffee Specialist", group: "cocoffee" },
   { name: "Sandy", role: "Barista", group: "cocoffee" },
   { name: "Elis", role: "Administration", group: "cocoffee" },
 
-  // Operations Team
-  { name: "Jim", role: "Logistic", group: "operations" },
-  { name: "Gani", role: "Assistant Logistic", group: "operations" },
+  // Operations Crew
+  { name: "Jim", role: "Logistics", group: "operations" },
+  { name: "Gani", role: "Assistant Logistics", group: "operations" },
   { name: "Karin", role: "General Assistant", group: "operations" },
   { name: "Eko", role: "General Assistant", group: "operations" },
 ];
 
 export const GROUP_LABELS: Record<TeamMember["group"], string> = {
-  nastar: "Nastar Coco Team",
-  cocoffee: "Cocoffee Team",
-  operations: "Operations Team",
+  nastar: "Nastar Coco Lab",
+  cocoffee: "Cocoffee Bar",
+  operations: "Operations Crew",
 };
 
 export const GROUP_LABELS_EN = GROUP_LABELS;
