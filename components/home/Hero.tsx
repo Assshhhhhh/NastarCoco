@@ -93,9 +93,7 @@ export default function Hero() {
             {/* Secondary — text link with underline */}
             <button
               onClick={() => {
-                const el = document.getElementById("story");
-                const navH = document.querySelector("header")?.offsetHeight ?? 0;
-                if (el) window.scrollTo({ top: el.offsetTop - navH, behavior: "smooth" });
+                document.getElementById("story")?.scrollIntoView({ behavior: "smooth", block: "start" });
               }}
               className="our-story-btn group text-sm font-semibold tracking-[0.12em] uppercase pb-0.5 transition-colors duration-200 cursor-pointer bg-transparent text-white"
             >

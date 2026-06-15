@@ -18,7 +18,7 @@ export default function HomePage() {
       <Hero />
       {/* Shared warm surface for the entire area below the hero */}
       <div
-        className="relative"
+        className="relative overflow-clip"
         style={{
           background: [
             "radial-gradient(ellipse 55% 22% at 10% 3%, rgba(242,146,12,0.18) 0%, transparent 60%)",
