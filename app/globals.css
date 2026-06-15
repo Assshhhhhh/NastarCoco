@@ -286,47 +286,9 @@ a.nav-link {
   color: #D97A0A;
 }
 
-/* Cocoffee preview — floor panels */
-.floor-panel {
-  transition:
-    transform 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 300ms cubic-bezier(0.22, 1, 0.36, 1),
-    filter 260ms ease;
+/* Cocoffee preview — building elevation */
+.floor-story {
   text-decoration: none;
-}
-
-.floor-panel:hover {
-  transform: translateY(-6px) scale(1.012);
-  box-shadow: 0 22px 48px rgba(74, 46, 28, 0.32) !important;
-  filter: brightness(1.05);
-}
-
-.floor-panel-arrow {
-  display: inline-block;
-  transition: transform 230ms ease;
-}
-
-.floor-panel:hover .floor-panel-arrow {
-  transform: translateX(5px);
-}
-
-/* Illustration reveal on hover */
-.floor-panel-illustration {
-  opacity: 0.13;
-  transition: opacity 300ms ease;
-}
-
-.floor-panel:hover .floor-panel-illustration {
-  opacity: 0.26;
-}
-
-/* Watermark number reveal on hover */
-.floor-panel-bg-text {
-  transition: opacity 300ms ease;
-}
-
-.floor-panel:hover .floor-panel-bg-text {
-  opacity: 0.13 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

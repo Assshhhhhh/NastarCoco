@@ -179,10 +179,6 @@ export default function Footer() {
           <p className="text-xs" style={{ color: "rgba(255,253,247,0.4)" }}>
             © {new Date().getFullYear()} Nastar Coco. All rights reserved.
           </p>
-          <p className="text-xs flex items-center gap-2" style={{ color: "rgba(255,253,247,0.4)" }}>
-            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F6B21A" }} />
-            Cocoffee by Nastar Coco — warm nastar, serious team.
-          </p>
         </div>
       </div>
     </footer>
