@@ -79,22 +79,8 @@ export default function BrandStory() {
       ref={sectionRef}
       id="story"
       className="relative overflow-hidden py-24 md:py-32 scroll-mt-28 md:scroll-mt-32"
-      style={{
-        background: "linear-gradient(180deg, #FFFDF7 0%, #FCF6EA 58%, #F6EAD6 100%)",
-        color: "#33211A",
-      }}
+      style={{ color: "#33211A" }}
     >
-      {/* Subtle warm grain */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='bs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23bs)'/%3E%3C/svg%3E")`,
-          backgroundSize: "220px",
-          opacity: 0.025,
-          mixBlendMode: "multiply",
-        }}
-      />
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.15fr] gap-16 lg:gap-20 items-stretch">
 

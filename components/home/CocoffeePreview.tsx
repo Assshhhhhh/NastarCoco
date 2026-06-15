@@ -174,52 +174,13 @@ export default function CocoffeePreview() {
   return (
     <section
       className="relative overflow-hidden py-16 md:py-24"
-      style={{
-        minHeight: "calc(100vh - var(--navbar-height))",
-        background: [
-          // Soft gold spotlight behind the building
-          "radial-gradient(ellipse 58% 48% at 50% 34%, rgba(246,178,26,0.13) 0%, transparent 62%)",
-          // Warm ground pool
-          "radial-gradient(ellipse 70% 36% at 50% 102%, rgba(140,96,58,0.2) 0%, transparent 60%)",
-          // Light café ground the building sits on
-          "linear-gradient(180deg, #F6EAD6 0%, #F0E2C8 52%, #E9D6B6 100%)",
-        ].join(", "),
-      }}
+      style={{ minHeight: "calc(100vh - var(--navbar-height))" }}
     >
-      {/* Top seam — eases in from the warm Brand Story above */}
+      {/* Soft gold spotlight behind the building */}
       <div
-        className="absolute top-0 inset-x-0 h-16 pointer-events-none"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[44rem] h-[34rem] pointer-events-none"
         aria-hidden
-        style={{ background: "linear-gradient(to bottom, rgba(246,234,214,0.85) 0%, transparent 100%)" }}
-      />
-
-      {/* Bottom fade — settles to a clean, uniform edge so it hands off seamlessly to Coco Squad */}
-      <div
-        className="absolute bottom-0 inset-x-0 h-24 pointer-events-none"
-        aria-hidden
-        style={{ background: "linear-gradient(to top, #E9D6B6 0%, transparent 100%)" }}
-      />
-
-      {/* Faint coffee-bean texture */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='64' height='64' viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%235E3C24' stroke-width='1' opacity='0.05'%3E%3Cellipse cx='16' cy='16' rx='7' ry='4' transform='rotate(-35 16 16)'/%3E%3Cpath d='M11 17 Q16 13 21 16' stroke-width='0.7'/%3E%3Cellipse cx='48' cy='48' rx='7' ry='4' transform='rotate(-35 48 48)'/%3E%3Cpath d='M43 49 Q48 45 53 48' stroke-width='0.7'/%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: "64px 64px",
-        }}
-      />
-
-      {/* Subtle grain */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
-          backgroundSize: "240px",
-          opacity: 0.03,
-          mixBlendMode: "multiply",
-        }}
+        style={{ background: "radial-gradient(ellipse at center, rgba(246,178,26,0.16) 0%, transparent 70%)" }}
       />
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col items-center">

@@ -78,47 +78,7 @@ const SQUADS: Squad[] = [
 
 export default function CocoSquad() {
   return (
-    <section
-      className="relative overflow-hidden py-24 md:py-32"
-      style={{
-        background: [
-          "radial-gradient(ellipse 60% 55% at 8% 6%, rgba(242,146,12,0.2) 0%, transparent 55%)",
-          "radial-gradient(ellipse 65% 60% at 96% 92%, rgba(246,178,26,0.22) 0%, transparent 58%)",
-          "linear-gradient(165deg, #FFF8EC 0%, #FEEFD4 48%, #FBE2BC 100%)",
-        ].join(", "),
-      }}
-    >
-      {/* Diagonal movement accents */}
-      <div
-        className="absolute -top-24 -left-16 w-[34rem] h-40 rounded-full pointer-events-none rotate-[-18deg]"
-        aria-hidden
-        style={{ background: "linear-gradient(90deg, rgba(246,178,26,0.16), transparent)" }}
-      />
-      <div
-        className="absolute top-1/3 -right-24 w-[30rem] h-32 rounded-full pointer-events-none rotate-[-14deg]"
-        aria-hidden
-        style={{ background: "linear-gradient(90deg, transparent, rgba(242,146,12,0.14))" }}
-      />
-
-      {/* Subtle grain */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        aria-hidden
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='gs'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23gs)'/%3E%3C/svg%3E")`,
-          backgroundSize: "220px",
-          opacity: 0.03,
-          mixBlendMode: "multiply",
-        }}
-      />
-
-      {/* Top seam — starts at the Cocoffee ground tone above, then brightens into the cream */}
-      <div
-        className="absolute top-0 inset-x-0 h-24 pointer-events-none"
-        aria-hidden
-        style={{ background: "linear-gradient(to bottom, #E9D6B6 0%, rgba(233,214,182,0.4) 45%, transparent 100%)" }}
-      />
-
+    <section className="relative overflow-hidden py-24 md:py-32">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Heading */}
