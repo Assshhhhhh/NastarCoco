@@ -83,18 +83,6 @@ export default function CocoSquad() {
 
         {/* Heading */}
         <div className="flex flex-col items-center text-center gap-4 mb-14 md:mb-16">
-          <span
-            className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase"
-            style={{
-              backgroundColor: "rgba(31,90,52,0.08)",
-              color: "#1F5A34",
-              border: "1px solid rgba(31,90,52,0.2)",
-            }}
-          >
-            <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F2920C" }} />
-            The People Behind the Craft
-          </span>
-
           <h2
             className="font-display font-bold leading-[1.08] tracking-tight"
             style={{ fontSize: "clamp(2.1rem, 4vw, 3.3rem)", color: "#33211A" }}
