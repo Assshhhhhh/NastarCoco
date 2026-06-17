@@ -1,5 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 import type { ReactNode } from "react";
+
+function fadeUp(visible: boolean, delay: number): React.CSSProperties {
+  return {
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0px)" : "translateY(22px)",
+    transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
+  };
+}
 
 type Tone = "light" | "dark";
 
@@ -171,8 +182,23 @@ const FLOORS: Floor[] = [
 ];
 
 export default function CocoffeePreview() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
+      ref={sectionRef}
       className="relative overflow-hidden py-16 md:py-24"
       style={{ minHeight: "calc(100vh - var(--navbar-height))" }}
     >
@@ -190,6 +216,7 @@ export default function CocoffeePreview() {
           className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase mb-7"
           style={{
             color: "#6B4423",
+            ...fadeUp(visible, 0),
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F6B21A" }} />
@@ -197,7 +224,14 @@ export default function CocoffeePreview() {
         </span>
 
         {/* ── The Cocoffee Building ── */}
-        <div className="w-full max-w-3xl">
+        <div
+          className="w-full max-w-3xl"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0px) scale(1)" : "translateY(28px) scale(0.97)",
+            transition: "opacity 0.8s ease 150ms, transform 0.8s ease 150ms",
+          }}
+        >
           {/* Ground shadow */}
           <div
             className="mx-auto mb-[-1.5rem] h-8 w-[88%] rounded-[50%] pointer-events-none"
