@@ -243,11 +243,13 @@ export default function CocoffeePreview() {
                 Welcome to
               </p>
               <h2
-                className="font-display font-bold leading-none"
+                className="leading-none"
                 style={{
-                  fontSize: "clamp(2.1rem, 5.5vw, 3.4rem)",
+                  fontFamily: "var(--font-bebas)",
+                  fontSize: "clamp(2.8rem, 7vw, 4.5rem)",
                   color: "#F6B21A",
                   textShadow: "0 0 26px rgba(246,178,26,0.45), 0 2px 2px rgba(0,0,0,0.3)",
+                  letterSpacing: "0.06em",
                 }}
               >
                 Cocoffee

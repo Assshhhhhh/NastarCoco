@@ -42,11 +42,14 @@ const MILESTONES = [
   },
 ];
 
-const STATS = [
-  { value: "10", label: "Team Members" },
-  { value: "3", label: "Divisions" },
-  { value: "2", label: "Brands" },
-  { value: "2", label: "Premium Retailers" },
+const BRANDS = [
+  { name: "nastarcoco", accent: "#E0A007" },
+  { name: "Coco Cookies", accent: "#A06A12" },
+  { name: "Coco Tong", accent: "#1F5A34" },
+  { name: "Coco Misu", accent: "#6F4E37" },
+  { name: "Coco Lapis", accent: "#C0560E" },
+  { name: "Do Donut", accent: "#A85A3C" },
+  { name: "Cocoffee", accent: "#33211A" },
 ];
 
 const CERTS = ["NIB", "PIRT", "Halal MUI", "BPOM", "Nutrition"];
@@ -114,32 +117,46 @@ export default function BrandStory() {
               style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)", color: "rgba(51,33,26,0.65)", ...fadeUp(visible, 150) }}
             >
               <p>
-                Nastar Coco began with a deep love for nastar — the classic pineapple pastry that carries the warmth of home, family, and shared moments.
+                <span style={{ color: "#1F5A34" }}>nastarcoco</span> began with a deep love for nastar — the classic pineapple pastry that carries the warmth of home, family, and shared moments.
               </p>
               <p>
-                What started as a cherished housemade family recipe soon grew beyond its original purpose, evolving into a modern dessert brand. Today, Nastar Coco brings the comforting flavors of Indonesia to life through thoughtfully crafted products, distinctive packaging, a welcoming café experience, and an expanding retail presence.
+                What started as a cherished housemade family recipe soon grew beyond its original purpose, evolving into a modern dessert brand. Today, <span style={{ color: "#1F5A34" }}>nastarcoco</span> brings the comforting flavors of Indonesia to life through thoughtfully crafted products, distinctive packaging, a welcoming café experience, and an expanding retail presence.
               </p>
             </div>
 
-            {/* Stats */}
+            {/* Brand family */}
             <div
-              className="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-7"
+              className="flex flex-col gap-4 pt-7"
               style={{ borderTop: "1px solid rgba(51,33,26,0.1)", ...fadeUp(visible, 300) }}
             >
-              {STATS.map((s) => (
-                <div key={s.label} className="flex flex-col gap-1">
-                  <span className="font-display leading-none" style={{ fontSize: "2.4rem", color: "#1F5A34" }}>
-                    {s.value}
+              <div className="flex items-baseline justify-between gap-3">
+                <p className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(51,33,26,0.5)" }}>
+                  Our Brand Family
+                </p>
+                <span className="text-[11px] font-medium tracking-[0.04em]" style={{ color: "rgba(51,33,26,0.38)" }}>
+                  7 brands &amp; growing
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-x-6 gap-y-2.5">
+                {BRANDS.map((b) => (
+                  <span key={b.name} className="flex items-center gap-2.5">
+                    <span className="w-[7px] h-[7px] rounded-full shrink-0" style={{ backgroundColor: b.accent }} />
+                    <span
+                      className="text-[14px] font-medium leading-none"
+                      style={{ color: b.name === "nastarcoco" ? "#1F5A34" : "#33211A" }}
+                    >
+                      {b.name}
+                    </span>
                   </span>
-                  <span className="text-[11px] font-semibold tracking-[0.18em] uppercase" style={{ color: "rgba(51,33,26,0.5)" }}>
-                    {s.label}
-                  </span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
             {/* Certifications */}
-            <div className="flex flex-wrap gap-x-6 gap-y-2.5 -mt-3" style={fadeUp(visible, 420)}>
+            <div
+              className="flex flex-wrap gap-x-6 gap-y-3"
+              style={fadeUp(visible, 420)}
+            >
               {CERTS.map((c) => (
                 <span key={c} className="flex items-center gap-2">
                   <span
@@ -225,6 +242,7 @@ export default function BrandStory() {
           </div>
 
         </div>
+
       </div>
     </section>
   );

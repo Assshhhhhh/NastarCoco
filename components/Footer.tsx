@@ -147,7 +147,7 @@ export default function Footer() {
           <div className="lg:col-span-3">
             <div className="flex items-center gap-2.5 mb-5">
               <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: "#C4743A" }} />
-              <p className="text-[12px] font-semibold tracking-[0.2em] uppercase" style={{ color: "rgba(255,253,247,0.9)" }}>
+              <p className="text-[14px] tracking-[0.2em] uppercase" style={{ fontFamily: "var(--font-bebas)", color: "rgba(255,253,247,0.9)" }}>
                 Cocoffee Hours
               </p>
             </div>

@@ -18,6 +18,18 @@ function scrollColor(_opacity: number): string {
   return "#ffffff";
 }
 
+/* ─────────────────────────────────────────────────────────────
+   COCOFFEE underline — its own animation, independent of the
+   other nav links. Tweak these freely without touching the rest.
+   ───────────────────────────────────────────────────────────── */
+const COCOFFEE_UNDERLINE = {
+  bottom: "0px",      // gap below the word (less negative = closer)
+  height: "1px",     // thickness of the line
+  restWidth: "0%",     // width when not hovered
+  hoverWidth: "100%",  // width when hovered
+  transition: "width 250ms ease", // animation
+};
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [opacity, setOpacity] = useState(0);
@@ -134,12 +146,17 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative font-semibold tracking-[0.15em] uppercase"
+                  className="relative font-semibold uppercase leading-none"
                   style={{
                     color: textFill,
-                    fontSize: "14.5px",
+                    fontSize: link.label === "Cocoffee" ? "17.5px" : "14.5px",
+                    fontFamily: link.label === "Cocoffee" ? "var(--font-bebas)" : undefined,
+                    letterSpacing: link.label === "Cocoffee" ? "0.1em" : "0.15em",
+                    fontWeight: link.label === "Cocoffee" ? 400 : undefined,
                     opacity: navMounted ? 1 : 0,
-                    transform: navMounted ? "translateY(0)" : "translateY(5px)",
+                    transform: navMounted
+                      ? link.label === "Cocoffee" ? "translateY(2px)" : "translateY(0)"
+                      : "translateY(5px)",
                     transition: navMounted
                       ? `opacity 0.5s cubic-bezier(0.4,0,0.2,1) ${300 + idx * 100}ms, transform 0.5s cubic-bezier(0.4,0,0.2,1) ${300 + idx * 100}ms`
                       : "none",
@@ -159,15 +176,29 @@ export default function Header() {
                       }}
                     >{char}</span>
                   ))}
-                  {/* Underline */}
-                  <span
-                    className="absolute left-0 bottom-[-3px] h-[1.5px]"
-                    style={{
-                      backgroundColor: link.underlineColor,
-                      width: hoveredLink === link.href ? "100%" : "0%",
-                      transition: "width 250ms ease",
-                    }}
-                  />
+                  {link.label === "Cocoffee" ? (
+                    /* ── COCOFFEE underline (special, see COCOFFEE_UNDERLINE above) ── */
+                    <span
+                      className="absolute left-0"
+                      style={{
+                        bottom: COCOFFEE_UNDERLINE.bottom,
+                        height: COCOFFEE_UNDERLINE.height,
+                        backgroundColor: link.underlineColor,
+                        width: hoveredLink === link.href ? COCOFFEE_UNDERLINE.hoverWidth : COCOFFEE_UNDERLINE.restWidth,
+                        transition: COCOFFEE_UNDERLINE.transition,
+                      }}
+                    />
+                  ) : (
+                    /* ── Default nav underline ── */
+                    <span
+                      className="absolute left-0 bottom-[-3px] h-[1.5px]"
+                      style={{
+                        backgroundColor: link.underlineColor,
+                        width: hoveredLink === link.href ? "100%" : "0%",
+                        transition: "width 250ms ease",
+                      }}
+                    />
+                  )}
                 </Link>
               ))}
             </nav>
@@ -195,6 +226,7 @@ export default function Header() {
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
                   className="text-ivory/80 hover:text-ivory hover:bg-ivory/5 text-sm font-medium px-4 py-3 rounded-lg transition-colors duration-200"
+                  style={link.label === "Cocoffee" ? { fontFamily: "var(--font-bebas)", fontSize: "17px" } : undefined}
                 >
                   {link.label}
                 </Link>
