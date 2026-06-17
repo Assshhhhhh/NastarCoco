@@ -31,13 +31,24 @@ const COCOFFEE_UNDERLINE = {
 };
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
   const [menuOpen, setMenuOpen] = useState(false);
-  const [opacity, setOpacity] = useState(0);
+  // Transparency is a home-hero-only treatment. Every other page starts solid.
+  // (Initialising non-home to 1 means a direct load is solid with no flash;
+  //  a Home→other navigation keeps the persisted 0 and animates up to 1.)
+  const [opacity, setOpacity] = useState(isHome ? 0 : 1);
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
   const [navMounted, setNavMounted] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
+    // Fade-on-scroll transparency only applies on the home page.
+    // On every other page the navbar is solid from the start.
+    if (!isHome) {
+      setOpacity(1);
+      return;
+    }
     const handleScroll = () => {
       const hero   = document.getElementById("hero");
       const header = document.querySelector("header");
@@ -49,27 +60,35 @@ export default function Header() {
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [pathname]);
+  }, [isHome]);
 
   useEffect(() => { const t = setTimeout(() => setNavMounted(true), 80); return () => clearTimeout(t); }, []);
 
-  const bgColor      = `linear-gradient(180deg, rgba(74,113,69,${opacity}) 0%, rgba(60,92,57,${opacity}) 100%)`;
+  const solidBg      = "linear-gradient(180deg, rgba(74,113,69,1) 0%, rgba(60,92,57,1) 100%)";
   const mobileMenuBg = `linear-gradient(180deg, rgba(74,113,69,0.98) 0%, rgba(60,92,57,0.98) 100%)`;
-  const blurAmount   = opacity > 0 ? `blur(${12 * opacity}px)` : "none";
   const textFill     = scrollColor(opacity);
+  // Animate the background LAYER'S OPACITY — gradients can't be CSS-transitioned,
+  // so a single 0→1 jump never animated. Snappy on home (so scroll stays responsive),
+  // a slower ease elsewhere so Home→page navigation fades transparent→solid.
+  const bgTransition = isHome ? "opacity 140ms linear" : "opacity 450ms ease";
 
   return (
     <>
-      <header
-        className="fixed top-0 left-0 right-0 z-50"
-        style={{
-          background: bgColor,
-          backdropFilter: blurAmount,
-          boxShadow: opacity > 0.5 ? `0 1px 0 rgba(255,255,255,${opacity * 0.08})` : "none",
-          transition: "background 120ms linear, backdrop-filter 120ms linear, box-shadow 120ms linear",
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <header className="fixed top-0 left-0 right-0 z-50">
+        {/* Animatable green background layer (its opacity carries the fade) */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden
+          style={{
+            background: solidBg,
+            backdropFilter: opacity > 0 ? "blur(12px)" : "none",
+            WebkitBackdropFilter: opacity > 0 ? "blur(12px)" : "none",
+            boxShadow: "0 1px 0 rgba(255,255,255,0.08)",
+            opacity,
+            transition: bgTransition,
+          }}
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-28 md:h-32">
 
             {/* Logo — inline SVG so text fill transitions with scroll */}
@@ -218,7 +237,7 @@ export default function Header() {
 
         {/* Mobile Dropdown Menu */}
         {menuOpen && (
-          <div className="lg:hidden border-t border-ivory/10" style={{ background: mobileMenuBg }}>
+          <div className="lg:hidden relative z-10 border-t border-ivory/10" style={{ background: mobileMenuBg }}>
             <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
               {NAV_LINKS.map((link) => (
                 <Link
