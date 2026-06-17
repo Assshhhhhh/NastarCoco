@@ -26,7 +26,7 @@ type Leader = {
 
 const LEADERS: Leader[] = [
   {
-    badge: "CEO",
+    badge: "Nikolas",
     title: "Chief Executive Officer",
     focus: "Vision & Brand Direction",
     desc: "Sets the long-term vision and guards the soul of Nastar Coco — shaping where the brand goes and what it stands for.",
@@ -44,7 +44,7 @@ const LEADERS: Leader[] = [
     ),
   },
   {
-    badge: "CFO",
+    badge: "Fabian",
     title: "Chief Financial Officer",
     focus: "Finance & Sustainable Growth",
     desc: "Builds the financial structure behind the brand — turning steady numbers into healthy, sustainable growth.",
@@ -62,7 +62,7 @@ const LEADERS: Leader[] = [
     ),
   },
   {
-    badge: "COO",
+    badge: "Jimmy",
     title: "Chief Operating Officer",
     focus: "Operations & Execution",
     desc: "Turns plans into daily reality — running the kitchen, the bar, and the systems that let us scale with care.",

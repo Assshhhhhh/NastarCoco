@@ -24,7 +24,7 @@ const MILESTONES = [
   },
   {
     title: "Retail",
-    desc: "Now stocked at Food Hall, Kemchick, and select retail partners.",
+    desc: "Bakmi Tiga Marga, Kemchick Pacific Place, FoodHall Plaza Indonesia, Grand Indonesia, Plaza Senayan and PIK Avenue.",
     icon: (
       <svg className="w-[32px] h-[32px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4zM3 6h18M16 10a4 4 0 01-8 0" strokeLinecap="round" strokeLinejoin="round" />
@@ -33,7 +33,7 @@ const MILESTONES = [
   },
   {
     title: "Today",
-    desc: "Expanding with Cocoffee — café, lab, kitchen, and community.",
+    desc: "Expanding with Cocoffee - Cafe, Nastar Coco's Lab and community.",
     icon: (
       <svg className="w-[32px] h-[32px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
         <path d="M17 8h1a4 4 0 010 8h-1M3 8h14v9a4 4 0 01-4 4H7a4 4 0 01-4-4V8z" strokeLinecap="round" strokeLinejoin="round" />
@@ -43,7 +43,7 @@ const MILESTONES = [
 ];
 
 const BRANDS = [
-  { name: "nastarcoco", accent: "#E0A007" },
+  { name: "Nastar Coco", accent: "#E0A007" },
   { name: "Coco Cookies", accent: "#A06A12" },
   { name: "Coco Tong", accent: "#1F5A34" },
   { name: "Coco Misu", accent: "#6F4E37" },
@@ -52,7 +52,7 @@ const BRANDS = [
   { name: "Cocoffee", accent: "#33211A" },
 ];
 
-const CERTS = ["NIB", "PIRT", "Halal MUI", "BPOM", "Nutrition"];
+const CERTS = ["NIB", "PIRT", "Halal", "BPOM", "Nutrition", "HKI"];
 
 function fadeUp(visible: boolean, delay: number): React.CSSProperties {
   return {
@@ -117,7 +117,7 @@ export default function BrandStory() {
               style={{ fontSize: "clamp(1rem, 1.25vw, 1.125rem)", color: "rgba(51,33,26,0.65)", ...fadeUp(visible, 150) }}
             >
               <p>
-                <span style={{ color: "#1F5A34" }}>nastarcoco</span> began with a deep love for nastar — the classic pineapple pastry that carries the warmth of home, family, and shared moments.
+                Nastar Coco began with a deep love for nastar — the classic pineapple pastry that carries the warmth of home, family, and shared moments.
               </p>
               <p>
                 What started as a cherished housemade family recipe soon grew beyond its original purpose, evolving into a modern dessert brand. Today, <span style={{ color: "#1F5A34" }}>nastarcoco</span> brings the comforting flavors of Indonesia to life through thoughtfully crafted products, distinctive packaging, a welcoming café experience, and an expanding retail presence.
