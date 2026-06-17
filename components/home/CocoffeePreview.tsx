@@ -187,15 +187,13 @@ export default function CocoffeePreview() {
 
         {/* Eyebrow */}
         <span
-          className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-[11px] font-semibold tracking-[0.2em] uppercase mb-7"
+          className="inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] uppercase mb-7"
           style={{
-            backgroundColor: "rgba(74,46,28,0.07)",
             color: "#6B4423",
-            border: "1px solid rgba(110,74,41,0.22)",
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F6B21A" }} />
-          A New Chapter — Cocoffee by Nastar Coco
+          A New Chapter — Cocoffee by nastarcoco
         </span>
 
         {/* ── The Cocoffee Building ── */}
@@ -254,8 +252,8 @@ export default function CocoffeePreview() {
               >
                 Cocoffee
               </h2>
-              <p className="mt-2.5 text-[13px] tracking-wide" style={{ color: "rgba(251,243,226,0.62)" }}>
-                Four floors of warmth &amp; craft — under one roof.
+              <p className="mt-0.5 text-[13px] tracking-wide" style={{ fontFamily: "var(--font-courier-prime)", color: "rgba(251,243,226,0.62)" }}>
+                by nastarcoco
               </p>
             </div>
 
