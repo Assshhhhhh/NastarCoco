@@ -21,8 +21,8 @@ const ORDER_MSG = "Hi Nastar Coco! Saya tertarik dengan Nastar Coco Signature ðŸ
    through a near-vertical cliff in the middle, then smooths out as it reaches
    the top edge (~47%). One continuous curve â€” fitted to the reference sketch,
    with pronounced curvature in both bends (shallow ends, steep middle). */
-const CLIFF = "M677,0 H1440 V900 H214 C534,700 357,200 677,0 Z";
-const CLIFF_EDGE = "M214,900 C534,700 357,200 677,0";
+const CLIFF = "M677,0 H1440 V900 H214 C560,750 330,150 677,0 Z";
+const CLIFF_EDGE = "M214,900 C560,750 330,150 677,0";
 
 const TASTE = ["Buttery", "Pineapple jam", "Handmade"];
 
