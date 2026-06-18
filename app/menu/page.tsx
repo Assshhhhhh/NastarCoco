@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { SITE, WHATSAPP_URL } from "@/data/site";
 
 function fadeUp(mounted: boolean, delay: number): React.CSSProperties {
@@ -52,6 +53,30 @@ export default function MenuPage() {
         aria-hidden
       />
 
+      {/* ── Pineapple — illustrated cream plate in the lower-left negative space.
+         Rendered BEFORE the cliff so the green panel overlaps its right edge (no
+         cream bleed onto the green). A bottom-left radial mask fades it into the
+         cream. Desktop only — cream isn't shown below lg. ── */}
+      <div
+        className="hidden lg:block absolute pointer-events-none select-none"
+        style={{
+          left: 0,
+          bottom: 0,
+          width: "clamp(320px, 33vw, 520px)",
+          height: "82%",
+          backgroundImage: "url('/background-left-menu.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "left bottom",
+          backgroundSize: "contain",
+          opacity: 0.95,
+          WebkitMaskImage:
+            "radial-gradient(135% 120% at 0% 100%, #000 40%, transparent 80%)",
+          maskImage:
+            "radial-gradient(135% 120% at 0% 100%, #000 40%, transparent 80%)",
+        }}
+        aria-hidden
+      />
+
       {/* ── Desktop: one bright-green panel with a single organic cliff-edge on the left ── */}
       <svg
         className="absolute inset-0 w-full h-full hidden lg:block"
@@ -83,94 +108,97 @@ export default function MenuPage() {
         />
       </svg>
 
+      {/* ── Decorative botanical accents (behind content, non-interactive) ── */}
+      {/* Leaves — low-contrast atmospheric texture on the green panel, far right.
+         Present across breakpoints; size + opacity ease down on tablet/mobile. */}
+      <LeafArt
+        className="absolute pointer-events-none select-none opacity-[0.07] md:opacity-[0.08] lg:opacity-[0.1]"
+        style={{
+          right: "clamp(-3.5rem, -2.5vw, -1.5rem)",
+          top: "50%",
+          width: "clamp(140px, 20vw, 320px)",
+          height: "auto",
+          color: "#F6B21A",
+          transform: "translateY(-50%) rotate(6deg)",
+        }}
+      />
+
       {/* ── Content ── */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-screen flex items-center pt-32 pb-16 lg:pt-36">
 
         {/* Editorial marks in the cream negative space (desktop only) */}
         <div
-          className="hidden lg:flex absolute left-8 items-center gap-4"
+          className="hidden lg:flex flex-col items-start absolute left-[-3.5rem] gap-3"
           style={{ top: "calc(var(--navbar-height) + 2.25rem)", ...fadeUp(mounted, 200) }}
         >
-          <span
-            className="font-display leading-none select-none"
-            style={{ fontSize: "4.75rem", color: "rgba(51,33,26,0.10)" }}
-          >
-            01
-          </span>
-          <div className="flex items-center gap-3">
-            <span className="h-px w-8" style={{ backgroundColor: "rgba(246,178,26,0.75)" }} />
+          {/* 01 ——— row */}
+          <div className="flex items-center gap-4">
             <span
-              className="font-semibold tracking-[0.34em] uppercase text-[11px]"
-              style={{ color: "rgba(51,33,26,0.5)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+              className="font-display leading-none select-none"
+              style={{ fontSize: "7.5rem", color: "rgba(51,33,26,0.11)" }}
             >
-              Signature Series
+              01
             </span>
+            <span className="h-[1px] w-24 rounded-full" style={{ backgroundColor: "rgba(246,178,26,0.75)" }} />
           </div>
+          {/* Vertical label below */}
+          <span
+            className="font-semibold tracking-[0.34em] uppercase text-[13px]"
+            style={{ color: "rgba(51,33,26,0.5)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+          >
+            Signature Series
+          </span>
         </div>
 
         <div className="w-full grid lg:grid-cols-12 gap-12 lg:gap-6 items-center">
 
           {/* Product showcase — straddles the cliff edge on desktop */}
           <div
-            className="relative flex justify-center lg:col-span-5"
+            className="relative flex justify-center lg:col-span-7"
             style={fadeUp(mounted, 360)}
           >
-            <div className="relative" style={{ width: "clamp(280px, 31vw, 430px)", aspectRatio: "1 / 1" }}>
-              {/* Soft halo */}
+            <div className="relative" style={{ width: "clamp(410px, 39vw, 600px)", aspectRatio: "1 / 1" }}>
+              {/* Soft grounding shadow (gold glow highlight removed) */}
               <div
                 className="absolute inset-0 rounded-full"
                 style={{
                   boxShadow: "0 40px 90px rgba(18,45,28,0.35)",
-                  background: "radial-gradient(circle at 50% 36%, rgba(246,178,26,0.28), transparent 66%)",
                 }}
                 aria-hidden
               />
-              {/* The plate placeholder */}
+              {/* The plate — Nastar Coco signature cookie photo */}
               <div
-                className="absolute inset-0 rounded-full flex flex-col items-center justify-center gap-4"
-                style={{
-                  background: "radial-gradient(circle at 50% 38%, #FEF6DF 0%, #F4E6C8 58%, #E8CF9C 100%)",
-                  border: "2px solid rgba(246,178,26,0.75)",
-                  boxShadow: "inset 0 2px 16px rgba(255,255,255,0.65), inset 0 -14px 36px rgba(200,144,12,0.20)",
-                }}
+                className="absolute inset-0 rounded-full overflow-hidden"
+                style={{ border: "5px solid #F6B21A" }}
               >
-                <span style={{ color: "#C8900C" }}>
-                  <NastarIcon />
-                </span>
+                <Image
+                  src="/nastarsolophoto.png"
+                  alt="Nastar Coco Signature — buttery pineapple nastar"
+                  fill
+                  sizes="(min-width: 1024px) 31vw, 430px"
+                  className="object-cover"
+                  style={{ objectPosition: "center 45%" }}
+                  priority
+                />
+                {/* Soft inner vignette for depth over the photo */}
                 <span
-                  className="text-[11px] font-semibold tracking-[0.2em] uppercase"
-                  style={{ color: "rgba(122,84,18,0.7)" }}
-                >
-                  Photo coming soon
-                </span>
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    boxShadow: "inset 0 2px 16px rgba(255,255,255,0.35), inset 0 -16px 40px rgba(120,80,8,0.28)",
+                  }}
+                  aria-hidden
+                />
               </div>
 
-              {/* Floating "Signature" seal */}
-              <div
-                className="absolute -top-3 -right-1 sm:top-1 sm:-right-3 flex flex-col items-center justify-center rounded-full text-center rotate-[8deg]"
-                style={{
-                  width: "5.75rem",
-                  height: "5.75rem",
-                  background: "linear-gradient(140deg, #1F5A34, #122D1C)",
-                  border: "2px solid #F6B21A",
-                  boxShadow: "0 12px 28px rgba(0,0,0,0.32)",
-                }}
-              >
-                <span style={{ color: "#F6B21A", fontSize: "0.9rem", lineHeight: 1 }}>★</span>
-                <span className="font-display leading-tight text-[13px] mt-1" style={{ color: "#FFFDF7" }}>
-                  Signature
-                </span>
-              </div>
 
               {/* Crumb accents */}
               <span className="absolute -bottom-2 left-6 w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#F6B21A", opacity: 0.85 }} aria-hidden />
               <span className="absolute bottom-8 -left-3 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F7D96B", opacity: 0.8 }} aria-hidden />
-              <span className="absolute top-8 -left-1 w-2 h-2 rounded-full" style={{ backgroundColor: "#C8900C", opacity: 0.55 }} aria-hidden />
             </div>
           </div>
 
           {/* Editorial copy — sits on the bright-green panel */}
-          <div className="max-w-xl lg:col-start-7 lg:col-span-6">
+          <div className="max-w-xl lg:col-start-8 lg:col-span-5">
             {/* Eyebrow (mobile / tablet — desktop uses the index marks) */}
             <div className="flex items-center gap-2.5 mb-5 lg:hidden" style={fadeUp(mounted, 150)}>
               <span className="w-2 h-2 rounded-full" style={{ backgroundColor: "#F6B21A" }} />
@@ -279,16 +307,44 @@ function WaIcon() {
   );
 }
 
-function NastarIcon() {
+/* ── Decorative botanical illustration (line-art, tinted via `color`) ── */
+
+type ArtProps = { className?: string; style?: React.CSSProperties };
+
+function LeafArt({ className, style }: ArtProps) {
   return (
-    <svg className="w-16 h-16" viewBox="0 0 64 64" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
-      {/* tart body */}
-      <circle cx="32" cy="38" r="17" />
-      {/* lattice */}
-      <path d="M22 32 L42 44 M42 32 L22 44" strokeWidth="1.3" opacity="0.55" />
-      <path d="M32 23 L32 53 M19 38 L45 38" strokeWidth="1.3" opacity="0.3" />
-      {/* leaf on top */}
-      <path d="M32 22 C29 15 33 12 36 9 C33 13 34 18 32 22" />
+    <svg
+      className={className}
+      style={style}
+      viewBox="0 0 220 340"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      {/* Main leaf */}
+      <path
+        d="M110,330 C70,255 60,150 80,60 C84,44 90,32 95,24 C104,48 118,90 124,150 C132,235 132,285 110,330 Z"
+        strokeWidth="2.4"
+      />
+      {/* Midrib */}
+      <path d="M110,324 C93,250 87,150 95,32" strokeWidth="1.7" strokeOpacity="0.9" />
+      {/* Lateral veins */}
+      <g strokeWidth="1.4" strokeOpacity="0.7">
+        <path d="M97,250 C88,244 82,240 75,232" />
+        <path d="M97,250 C107,246 115,244 122,240" />
+        <path d="M91,180 C83,176 77,172 70,166" />
+        <path d="M91,180 C101,176 110,174 118,170" />
+        <path d="M88,116 C82,112 78,110 73,104" />
+        <path d="M88,116 C96,112 104,110 112,106" />
+      </g>
+      {/* Companion leaf */}
+      <path
+        d="M116,300 C150,288 175,258 191,208 C168,252 147,282 121,304 Z"
+        strokeWidth="2.2"
+      />
+      <path d="M120,300 C150,282 172,254 188,212" strokeWidth="1.5" strokeOpacity="0.85" />
     </svg>
   );
 }
