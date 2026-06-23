@@ -60,10 +60,10 @@ export default function MenuPage() {
       <div
         className="hidden lg:block absolute pointer-events-none select-none"
         style={{
-          left: 0,
-          bottom: 0,
-          width: "clamp(320px, 33vw, 520px)",
-          height: "82%",
+          left: "1rem",
+          bottom: "-3rem",
+          width: "clamp(420px, 44vw, 680px)",
+          height: "95%",
           backgroundImage: "url('/background-left-menu.png')",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "left bottom",
@@ -128,26 +128,33 @@ export default function MenuPage() {
 
         {/* Editorial marks in the cream negative space (desktop only) */}
         <div
-          className="hidden lg:flex flex-col items-start absolute left-[-3.5rem] gap-3"
+          className="hidden lg:flex flex-col items-start absolute left-[-3.5rem]"
           style={{ top: "calc(var(--navbar-height) + 2.25rem)", ...fadeUp(mounted, 200) }}
         >
           {/* 01 ——— row */}
           <div className="flex items-center gap-4">
-            <span
-              className="font-display leading-none select-none"
-              style={{ fontSize: "7.5rem", color: "rgba(51,33,26,0.11)" }}
-            >
-              01
-            </span>
+            <div className="relative">
+              <span
+                className="font-display leading-none select-none"
+                style={{ fontSize: "7.5rem", color: "rgba(51,33,26,0.11)" }}
+              >
+                01
+              </span>
+              {/* Vertical label — centered below 01, sitting between the 0 and 1 */}
+              <div
+                className="absolute flex justify-center"
+                style={{ top: "100%", left: 0, right: 0, paddingTop: "0.75rem" }}
+              >
+                <span
+                  className="font-semibold tracking-[0.34em] uppercase text-[13px]"
+                  style={{ color: "rgba(51,33,26,0.5)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                >
+                  Signature Series
+                </span>
+              </div>
+            </div>
             <span className="h-[1px] w-24 rounded-full" style={{ backgroundColor: "rgba(246,178,26,0.75)" }} />
           </div>
-          {/* Vertical label below */}
-          <span
-            className="font-semibold tracking-[0.34em] uppercase text-[13px]"
-            style={{ color: "rgba(51,33,26,0.5)", writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-          >
-            Signature Series
-          </span>
         </div>
 
         <div className="w-full grid lg:grid-cols-12 gap-12 lg:gap-6 items-center">
@@ -191,9 +198,40 @@ export default function MenuPage() {
               </div>
 
 
-              {/* Crumb accents */}
-              <span className="absolute -bottom-2 left-6 w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#F6B21A", opacity: 0.85 }} aria-hidden />
-              <span className="absolute bottom-8 -left-3 w-1.5 h-1.5 rounded-full" style={{ backgroundColor: "#F7D96B", opacity: 0.8 }} aria-hidden />
+              {/* Orbit frame — a solid inner ring + a slow-spinning dashed outer
+                 ring. Accent dots ride the inner ring via rotating wrappers (so
+                 they stay anchored to the ring at any responsive size). */}
+              <div
+                className="absolute rounded-full pointer-events-none"
+                style={{ inset: "-1.5rem", border: "1px solid rgba(246,178,26,0.35)" }}
+                aria-hidden
+              />
+              <div
+                className="absolute rounded-full pointer-events-none animate-[spin_60s_linear_infinite]"
+                style={{ inset: "-2.75rem", border: "1.5px dashed rgba(246,178,26,0.28)" }}
+                aria-hidden
+              />
+              {/* Accent dots riding the inner ring (inset matches the ring) */}
+              <div
+                className="absolute pointer-events-none"
+                style={{ inset: "-1.5rem", transform: "rotate(-42deg)" }}
+                aria-hidden
+              >
+                <span
+                  className="absolute top-0 left-1/2 w-3 h-3 rounded-full"
+                  style={{ backgroundColor: "#F6B21A", transform: "translate(-50%, -50%)" }}
+                />
+              </div>
+              <div
+                className="absolute pointer-events-none"
+                style={{ inset: "-1.5rem", transform: "rotate(155deg)" }}
+                aria-hidden
+              >
+                <span
+                  className="absolute top-0 left-1/2 w-2 h-2 rounded-full"
+                  style={{ backgroundColor: "#F7D96B", transform: "translate(-50%, -50%)" }}
+                />
+              </div>
             </div>
           </div>
 
@@ -217,15 +255,23 @@ export default function MenuPage() {
               <em className="not-italic italic" style={{ color: "#F6B21A" }}>Signature</em>
             </h1>
 
-            {/* Taste tags */}
-            <div className="flex flex-wrap gap-2.5 mb-6" style={fadeUp(mounted, 320)}>
-              {TASTE.map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center rounded-full px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.06em] uppercase"
-                  style={{ color: "#FBF3E2", border: "1px solid rgba(246,178,26,0.45)", backgroundColor: "rgba(246,178,26,0.08)" }}
-                >
-                  {t}
+            {/* Taste notes — inline editorial row with diamond dividers */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mb-6" style={fadeUp(mounted, 320)}>
+              {TASTE.map((t, i) => (
+                <span key={t} className="inline-flex items-center gap-4">
+                  {i > 0 && (
+                    <span
+                      className="w-1.5 h-1.5 rotate-45"
+                      style={{ backgroundColor: "rgba(255,253,247,0.5)" }}
+                      aria-hidden
+                    />
+                  )}
+                  <span
+                    className="text-[12px] font-semibold tracking-[0.18em] uppercase"
+                    style={{ color: "#F7D96B" }}
+                  >
+                    {t}
+                  </span>
                 </span>
               ))}
             </div>
